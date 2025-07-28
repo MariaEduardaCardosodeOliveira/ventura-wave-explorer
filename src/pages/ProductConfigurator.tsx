@@ -4,6 +4,7 @@ import { ConfiguratorLayout } from "@/components/configurator/ConfiguratorLayout
 import { ProductCustomization } from "@/components/configurator/ProductCustomization";
 import { PaymentOptions } from "@/components/configurator/PaymentOptions";
 import { PersonalInfo } from "@/components/configurator/PersonalInfo";
+import { QuoteSummary } from "@/components/configurator/QuoteSummary";
 
 interface ConfigurationData {
   model: string;
@@ -143,14 +144,10 @@ const ProductConfigurator = () => {
       
       case 5:
         return (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold text-primary mb-4">
-              Orçamento Final
-            </h2>
-            <p className="text-muted-foreground">
-              Em desenvolvimento...
-            </p>
-          </div>
+          <QuoteSummary
+            configData={configData}
+            basePrice={basePrice}
+          />
         );
       
       default:
