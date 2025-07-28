@@ -85,100 +85,193 @@ const MonteOSeu = () => {
         </div>
       </section>
 
-      {/* Category Selection */}
+      {/* Product Selection */}
       <section className="section-padding bg-background">
         <div className="container mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
-              Escolha sua Categoria
+              Escolha seu Modelo
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Selecione o tipo de produto que deseja configurar
+              Selecione o modelo que deseja configurar
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          {/* Category Filters */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
             {categories.map((category) => {
               const IconComponent = category.icon;
               return (
-                <Card 
-                  key={category.id}
-                  className="card-elegant group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                  onClick={() => handleCategorySelect(category.id)}
-                >
-                  <CardContent className="p-6 text-center">
-                    <div className={`w-16 h-16 ${category.color} rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform`}>
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-                    
-                    <h3 className="text-xl font-bold mb-2 text-primary">
-                      {category.title}
-                    </h3>
-                    
-                    <p className="text-sm font-medium text-accent mb-2">
-                      {category.subtitle}
-                    </p>
-                    
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {category.description}
-                    </p>
-                    
-                    <div className="mb-4">
-                      <p className="text-xs text-muted-foreground mb-2">Modelos disponíveis:</p>
-                      <div className="flex flex-wrap justify-center gap-1">
-                        {category.models.map((model, index) => (
-                          <span key={index} className="text-xs bg-secondary/50 px-2 py-1 rounded">
-                            {model}
-                          </span>
-                        ))}
+                <div key={category.id} className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 text-sm">
+                  <IconComponent className="w-4 h-4" />
+                  <span>{category.title}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Product Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {categories.map((category) => 
+              category.models.map((model, index) => {
+                const IconComponent = category.icon;
+                return (
+                  <Card 
+                    key={`${category.id}-${index}`}
+                    className="card-elegant group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden"
+                    onClick={() => navigate(`/monte-o-seu/${category.id}/${model.toLowerCase().replace(/\s+/g, '-')}`)}
+                  >
+                    <div className="relative">
+                      <div className={`h-48 ${category.color} flex items-center justify-center relative overflow-hidden`}>
+                        <IconComponent className="w-16 h-16 text-white/20 absolute" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        <div className="relative z-10 text-center text-white">
+                          <IconComponent className="w-12 h-12 mx-auto mb-2" />
+                          <p className="text-sm font-medium">{category.subtitle}</p>
+                        </div>
+                      </div>
+                      <div className="absolute top-4 right-4">
+                        <div className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-xs text-white">
+                          {category.title}
+                        </div>
                       </div>
                     </div>
                     
-                    <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                      Configurar
-                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
+                    <CardContent className="p-6">
+                      <h3 className="text-lg font-bold mb-2 text-primary group-hover:text-accent transition-colors">
+                        {model}
+                      </h3>
+                      
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                        {category.description}
+                      </p>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1">
+                          <div className="flex text-yellow-400">
+                            {"★".repeat(5)}
+                          </div>
+                          <span className="text-xs text-muted-foreground ml-1">4.8</span>
+                        </div>
+                        
+                        <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                          Configurar
+                          <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })
+            )}
           </div>
         </div>
       </section>
 
       {/* Process Overview */}
-      <section className="section-padding bg-secondary/20">
+      <section className="section-padding bg-gradient-to-br from-primary/5 via-secondary/10 to-accent/5">
         <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-primary">
               Como Funciona
             </h2>
-            <p className="text-lg text-muted-foreground">
-              Processo simples em 5 etapas
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Processo intuitivo e rápido para criar seu produto personalizado
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6 max-w-5xl mx-auto">
-            {[
-              { step: "1", title: "Escolher Modelo", desc: "Selecione o modelo ideal" },
-              { step: "2", title: "Personalizar", desc: "Cores, acabamentos e acessórios" },
-              { step: "3", title: "Pagamento", desc: "Escolha a forma de pagamento" },
-              { step: "4", title: "Seus Dados", desc: "Informações pessoais" },
-              { step: "5", title: "Orçamento", desc: "Receba por email e WhatsApp" }
-            ].map((item, index) => (
-              <div key={index} className="text-center">
-                <div className="w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center mx-auto mb-4 text-lg font-bold">
-                  {item.step}
+          <div className="relative max-w-6xl mx-auto">
+            {/* Background Pattern */}
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 rounded-3xl blur-3xl"></div>
+            
+            <div className="relative grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
+              {[
+                { 
+                  step: "1", 
+                  title: "Escolher Modelo", 
+                  desc: "Navegue pelos modelos disponíveis e selecione o que mais combina com você",
+                  icon: "🎯"
+                },
+                { 
+                  step: "2", 
+                  title: "Personalizar", 
+                  desc: "Escolha cores, acabamentos, acessórios e personalize cada detalhe",
+                  icon: "🎨"
+                },
+                { 
+                  step: "3", 
+                  title: "Forma de Pagamento", 
+                  desc: "Selecione a opção de pagamento que melhor se adequa ao seu perfil",
+                  icon: "💳"
+                },
+                { 
+                  step: "4", 
+                  title: "Seus Dados", 
+                  desc: "Preencha suas informações para finalizar o processo",
+                  icon: "📝"
+                },
+                { 
+                  step: "5", 
+                  title: "Orçamento Pronto", 
+                  desc: "Receba instantaneamente por email e WhatsApp seu orçamento detalhado",
+                  icon: "✅"
+                }
+              ].map((item, index) => (
+                <div key={index} className="relative">
+                  <Card className="card-elegant p-6 text-center h-full group hover:scale-105 transition-all duration-300 hover:shadow-xl bg-background/80 backdrop-blur-sm">
+                    <div className="relative">
+                      {/* Step Number */}
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent text-white rounded-2xl flex items-center justify-center mx-auto mb-4 text-xl font-bold shadow-lg group-hover:scale-110 transition-transform">
+                        {item.step}
+                      </div>
+                      
+                      {/* Icon */}
+                      <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">
+                        {item.icon}
+                      </div>
+                      
+                      {/* Content */}
+                      <h3 className="text-lg font-bold mb-3 text-primary group-hover:text-accent transition-colors">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </Card>
+                  
+                  {/* Connector Arrow */}
+                  {index < 4 && (
+                    <div className="hidden lg:block absolute top-1/2 -right-4 z-10">
+                      <div className="w-8 h-0.5 bg-gradient-to-r from-primary to-accent relative">
+                        <ArrowRight className="w-4 h-4 text-primary absolute -right-2 -top-1.5" />
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <h3 className="font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.desc}</p>
-                {index < 4 && (
-                  <div className="hidden md:block w-full h-0.5 bg-primary/20 mt-6 relative">
-                    <ArrowRight className="w-4 h-4 text-primary absolute right-0 top-1/2 translate-y-2 translate-x-2" />
-                  </div>
-                )}
+              ))}
+            </div>
+          </div>
+          
+          {/* Bottom CTA */}
+          <div className="text-center mt-12">
+            <p className="text-muted-foreground mb-6">
+              Todo o processo leva menos de 5 minutos
+            </p>
+            <div className="flex items-center justify-center gap-4 text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-green-500"></div>
+                <span>Processo 100% online</span>
               </div>
-            ))}
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-blue-500"></div>
+                <span>Orçamento em tempo real</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 rounded-full bg-purple-500"></div>
+                <span>Sem compromisso</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
