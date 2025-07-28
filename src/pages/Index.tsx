@@ -1,12 +1,38 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Hero from "@/components/Hero";
+import Categories from "@/components/Categories";
+import AboutSection from "@/components/AboutSection";
+import BlogSection from "@/components/BlogSection";
+import CustomizationCTA from "@/components/CustomizationCTA";
+import DealerCTA from "@/components/DealerCTA";
+import Footer from "@/components/Footer";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <Hero />
+      
+      {/* Categories Section */}
+      <Categories />
+      
+      {/* About Section */}
+      <AboutSection />
+      
+      {/* Blog Section */}
+      <BlogSection />
+      
+      {/* Customization CTA */}
+      <CustomizationCTA />
+      
+      {/* Dealer CTA */}
+      <DealerCTA />
+      
+      {/* Footer */}
+      <Footer />
+      
+      {/* WhatsApp Float Button */}
+      <WhatsAppFloat />
     </div>
   );
 };

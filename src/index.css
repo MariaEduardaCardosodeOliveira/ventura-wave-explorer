@@ -9,34 +9,42 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 210 16% 13%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 210 16% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 210 16% 13%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Ventura Brand Colors */
+    --primary: 210 100% 13%; /* #002244 - Azul marinho escuro */
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary-foreground: 210 100% 13%;
+
+    --accent: 162 78% 43%; /* #18BF7F - Verde elétrico */
+    --accent-foreground: 0 0% 100%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 210 100% 13%;
 
-    --radius: 0.5rem;
+    /* Design Tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(210 100% 13% / 0.9), hsl(210 100% 13% / 0.7));
+    --gradient-accent: linear-gradient(135deg, hsl(162 78% 43%), hsl(162 78% 50%));
+    --shadow-elegant: 0 10px 30px -10px hsl(210 100% 13% / 0.3);
+    --shadow-card: 0 4px 20px -4px hsl(210 100% 13% / 0.1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    --radius: 0.75rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +109,88 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Hero Button Variant */
+  .btn-hero {
+    @apply bg-gradient-to-r from-accent to-accent/90 text-accent-foreground 
+           px-8 py-4 rounded-full font-semibold text-lg 
+           hover:shadow-lg hover:-translate-y-0.5 
+           transition-all duration-300 ease-out 
+           inline-flex items-center gap-2;
+  }
+
+  /* Primary Button Variant */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground 
+           px-6 py-3 rounded-full font-medium
+           hover:bg-primary/90 hover:shadow-lg hover:-translate-y-0.5
+           transition-all duration-300 ease-out
+           inline-flex items-center gap-2;
+  }
+
+  /* Secondary Button Variant */
+  .btn-secondary {
+    @apply bg-transparent border-2 border-primary text-primary
+           px-6 py-3 rounded-full font-medium
+           hover:bg-primary hover:text-primary-foreground
+           transition-all duration-300 ease-out
+           inline-flex items-center gap-2;
+  }
+
+  /* Card Component */
+  .card-elegant {
+    @apply bg-card rounded-2xl p-6 
+           shadow-[var(--shadow-card)] 
+           hover:shadow-[var(--shadow-elegant)]
+           hover:-translate-y-1
+           transition-all duration-300 ease-out;
+  }
+
+  /* Image Placeholder */
+  .image-placeholder {
+    @apply bg-muted rounded-xl flex items-center justify-center
+           text-muted-foreground text-sm font-medium
+           border-2 border-dashed border-border
+           min-h-[200px];
+  }
+
+  /* Section Spacing */
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Fade In Animation */
+  .fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* WhatsApp Float Button */
+  .whatsapp-float {
+    @apply fixed bottom-6 right-6 z-50
+           bg-green-500 text-white
+           w-16 h-16 rounded-full
+           flex items-center justify-center
+           shadow-xl hover:shadow-2xl
+           hover:scale-110
+           transition-all duration-300 ease-out;
   }
 }
