@@ -9,40 +9,35 @@ const Navbar = () => {
   const location = useLocation();
 
   const navigation = [
-    { name: "Início", href: "/" },
     { name: "Ventura Marine", href: "/ventura-marine" },
     { name: "Adventure", href: "/adventure" },
     { name: "Electric", href: "/electric" },
-    { name: "Consórcio", href: "/consorcio" },
-    { name: "Monte o Seu", href: "/monte-o-seu" },
-    { name: "Blog", href: "/blog" },
   ];
 
   const isActive = (href: string) => location.pathname === href;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md">
+      <div className="container mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-sm">V</span>
-            </div>
-            <span className="text-xl font-bold text-primary">Ventura</span>
+          <Link to="/" className="flex items-center">
+            <span className="text-2xl font-bold text-primary tracking-tight font-playfair">
+              VENTURA
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 to={item.href}
                 className={cn(
-                  "px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-muted hover:text-primary",
+                  "text-sm font-medium transition-colors hover:text-primary",
                   isActive(item.href)
-                    ? "text-primary bg-muted"
-                    : "text-muted-foreground"
+                    ? "text-primary"
+                    : "text-slate-600"
                 )}
               >
                 {item.name}
@@ -50,60 +45,64 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Contact Button */}
-          <div className="hidden md:block">
-            <Button asChild>
+          {/* Contact Button & Menu */}
+          <div className="flex items-center space-x-4">
+            <Button 
+              asChild 
+              className="hidden md:flex rounded-full px-6 py-2 bg-primary hover:bg-primary/90 text-white font-medium"
+            >
               <a 
                 href="https://wa.me/5511971124225" 
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                Contato
+                Contact Us
               </a>
             </Button>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+            
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+                className="rounded-full w-10 h-10"
+              >
+                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </Button>
+            </div>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border">
-            <div className="flex flex-col space-y-2">
+          <div className="md:hidden pt-4 pb-2 border-t border-slate-200 mt-4">
+            <div className="flex flex-col space-y-3">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   to={item.href}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    "px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                    "px-3 py-2 text-sm font-medium transition-colors",
                     isActive(item.href)
-                      ? "text-primary bg-muted"
-                      : "text-muted-foreground hover:bg-muted hover:text-primary"
+                      ? "text-primary"
+                      : "text-slate-600 hover:text-primary"
                   )}
                 >
                   {item.name}
                 </Link>
               ))}
               <div className="pt-2">
-                <Button asChild className="w-full">
+                <Button asChild className="w-full rounded-full">
                   <a 
                     href="https://wa.me/5511971124225" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
                   >
-                    Contato
+                    Contact Us
                   </a>
                 </Button>
               </div>
