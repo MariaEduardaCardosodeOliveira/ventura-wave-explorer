@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
           {/* Left Side - Main Title */}
           <div className="text-white space-y-8">
-            <h1 className="text-6xl lg:text-7xl font-bold font-playfair leading-tight">
+            <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
               Discover Luxury
               <br />
               <span className="text-5xl lg:text-6xl font-light">at The Sea</span>
@@ -40,28 +40,6 @@ const Hero = () => {
               Explore breathtaking destinations with our premium yacht rentals. 
               Comfort, elegance, and adventure just a booking away!
             </p>
-            
-            <div className="space-y-4">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <span className="text-2xl">🚤</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Premium Fleet</h3>
-                  <p className="text-sm opacity-75">Luxury yachts and boats</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-                  <span className="text-2xl">⚓</span>
-                </div>
-                <div>
-                  <h3 className="font-semibold">Expert Service</h3>
-                  <p className="text-sm opacity-75">Professional crew included</p>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-primary tracking-tight font-playfair">
+            <span className="text-2xl font-bold text-primary tracking-tight">
               VENTURA
             </span>
           </Link>
