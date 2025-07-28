@@ -48,13 +48,13 @@ const CustomizationCTA = () => {
 
           {/* Visual Element */}
           <div className="fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="relative space-y-6">
-              {/* Barco Image Placeholder */}
-              <div className="relative">
-                <div className="image-placeholder h-40 lg:h-48 bg-primary-foreground/10 border-primary-foreground/20 rounded-lg">
-                  <div className="text-center text-primary-foreground/60">
-                    <Settings className="w-12 h-12 mx-auto mb-2" />
-                    <span className="text-sm">Imagem de barco customizado</span>
+            <div className="relative h-96 lg:h-[500px]">
+              {/* Barco Image Placeholder - Top Left */}
+              <div className="absolute top-0 left-0 w-64 h-40 lg:w-80 lg:h-48">
+                <div className="image-placeholder h-full bg-primary-foreground/10 border-primary-foreground/20 rounded-lg">
+                  <div className="text-center text-primary-foreground/60 flex flex-col items-center justify-center h-full">
+                    <Settings className="w-8 h-8 mx-auto mb-2" />
+                    <span className="text-xs">Imagem de barco customizado</span>
                   </div>
                 </div>
                 <div className="absolute -top-2 -right-2 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-xl">
@@ -62,12 +62,12 @@ const CustomizationCTA = () => {
                 </div>
               </div>
 
-              {/* Quadriciclo Image Placeholder */}
-              <div className="relative">
-                <div className="image-placeholder h-40 lg:h-48 bg-primary-foreground/10 border-primary-foreground/20 rounded-lg">
-                  <div className="text-center text-primary-foreground/60">
-                    <Settings className="w-12 h-12 mx-auto mb-2" />
-                    <span className="text-sm">Imagem de quadriciclo customizado</span>
+              {/* Quadriciclo Image Placeholder - Bottom Right */}
+              <div className="absolute bottom-0 right-0 w-64 h-40 lg:w-80 lg:h-48">
+                <div className="image-placeholder h-full bg-primary-foreground/10 border-primary-foreground/20 rounded-lg">
+                  <div className="text-center text-primary-foreground/60 flex flex-col items-center justify-center h-full">
+                    <Settings className="w-8 h-8 mx-auto mb-2" />
+                    <span className="text-xs">Imagem de quadriciclo customizado</span>
                   </div>
                 </div>
                 <div className="absolute -bottom-2 -left-2 w-12 h-12 bg-primary-foreground/20 backdrop-blur-sm rounded-full flex items-center justify-center">
