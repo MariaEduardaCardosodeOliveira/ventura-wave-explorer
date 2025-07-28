@@ -26,7 +26,7 @@ const Hero = () => {
         </div>
 
         {/* Bottom Left - Main Title */}
-        <div className="absolute bottom-20 left-6">
+        <div className="absolute bottom-32 left-6">
           <div className="text-white space-y-8">
             <h1 className="text-6xl lg:text-7xl font-bold font-poppins leading-tight">
               Discover Luxury
