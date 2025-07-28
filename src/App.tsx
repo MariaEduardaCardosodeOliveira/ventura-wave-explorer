@@ -8,6 +8,7 @@ import VenturaMarine from "./pages/VenturaMarine";
 import Pontoon250 from "./pages/Pontoon250";
 import V195Comfort from "./pages/V195Comfort";
 import MonteOSeu from "./pages/MonteOSeu";
+import ProductConfigurator from "./pages/ProductConfigurator";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/pontoon250" element={<Pontoon250 />} />
           <Route path="/v195comfort" element={<V195Comfort />} />
           <Route path="/monte-o-seu" element={<MonteOSeu />} />
+          <Route path="/monte-o-seu/:category/:model" element={<ProductConfigurator />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
