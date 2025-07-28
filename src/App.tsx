@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import VenturaMarine from "./pages/VenturaMarine";
 import Pontoon250 from "./pages/Pontoon250";
 import V195Comfort from "./pages/V195Comfort";
+import MonteOSeu from "./pages/MonteOSeu";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/ventura-marine" element={<VenturaMarine />} />
           <Route path="/pontoon250" element={<Pontoon250 />} />
           <Route path="/v195comfort" element={<V195Comfort />} />
+          <Route path="/monte-o-seu" element={<MonteOSeu />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
