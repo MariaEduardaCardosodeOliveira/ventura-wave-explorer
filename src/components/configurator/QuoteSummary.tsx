@@ -61,180 +61,190 @@ export const QuoteSummary = ({ configData, basePrice }: QuoteSummaryProps) => {
       const pdf = new jsPDF();
       const quoteId = `#VM${Date.now().toString().slice(-6)}`;
       const pageWidth = pdf.internal.pageSize.width;
+      const pageHeight = pdf.internal.pageSize.height;
       
-      // Função auxiliar para desenhar retângulo com cor
-      const drawRect = (x: number, y: number, width: number, height: number, color: string) => {
-        const [r, g, b] = color.match(/\d+/g)?.map(Number) || [0, 0, 0];
-        pdf.setFillColor(r, g, b);
-        pdf.rect(x, y, width, height, 'F');
-      };
+      // Header - Logo e Título
+      pdf.setFontSize(18);
+      pdf.setFont(undefined, 'bold');
+      pdf.setTextColor(50, 50, 50);
+      pdf.text('VENTURA', 20, 25);
+      pdf.setTextColor(255, 140, 0);
+      pdf.text('MARINE', 52, 25);
       
-      // Header com fundo azul
-      drawRect(0, 0, pageWidth, 50, 'rgb(0, 102, 204)');
-      
-      // Logo/Nome da empresa
       pdf.setFontSize(24);
-      pdf.setTextColor(255, 255, 255);
-      pdf.setFont(undefined, 'bold');
-      pdf.text('VENTURA MARINE', 20, 25);
+      pdf.setTextColor(150, 150, 150);
+      pdf.text('Cotação', pageWidth - 60, 25);
       
-      pdf.setFontSize(12);
-      pdf.setFont(undefined, 'normal');
-      pdf.text('Orçamento de Embarcação Premium', 20, 35);
-      
-      // Caixa de informações do orçamento
-      drawRect(15, 60, pageWidth - 30, 25, 'rgb(240, 248, 255)');
+      // Informações da Empresa e Cliente
+      let yPos = 45;
+      pdf.setFontSize(10);
       pdf.setTextColor(0, 0, 0);
-      pdf.setFontSize(11);
-      pdf.text(`ID do Orçamento: ${quoteId}`, 20, 72);
-      pdf.text(`Data de Emissão: ${new Date().toLocaleDateString('pt-BR')}`, 20, 80);
-      pdf.text(`Válido até: ${new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('pt-BR')}`, pageWidth - 70, 72);
+      pdf.setFont(undefined, 'normal');
       
-      // Seção do Produto
-      let yPos = 100;
-      drawRect(15, yPos - 5, pageWidth - 30, 20, 'rgb(0, 102, 204)');
-      pdf.setTextColor(255, 255, 255);
-      pdf.setFontSize(14);
+      // Dados da empresa (lado esquerdo)
+      pdf.text('Data de Emissão:', 20, yPos);
+      pdf.text(new Date().toLocaleDateString('pt-BR'), 60, yPos);
+      yPos += 8;
+      pdf.text('COTAÇÃO Nº:', 20, yPos);
+      pdf.text(quoteId, 60, yPos);
+      yPos += 8;
+      pdf.text('Data de Validade:', 20, yPos);
+      pdf.text(new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('pt-BR'), 60, yPos);
+      
+      // Dados do cliente (lado direito)
+      yPos = 45;
+      pdf.text('Cliente:', pageWidth - 80, yPos);
+      pdf.text(configData.personalInfo?.nomeCompleto || '[Nome do Cliente]', pageWidth - 50, yPos);
+      yPos += 8;
+      pdf.text('[Endereço]', pageWidth - 50, yPos);
+      yPos += 8;
+      pdf.text(`${configData.personalInfo?.cidade || '[Cidade]'}, ${configData.personalInfo?.estado || '[Estado]'}, ${configData.personalInfo?.cep || '[CEP]'}`, pageWidth - 50, yPos);
+      yPos += 8;
+      pdf.text(`[${configData.personalInfo?.telefone || 'Telefone'}]`, pageWidth - 50, yPos);
+      yPos += 8;
+      pdf.text(`ID do Cliente [${configData.personalInfo?.cpf || 'CPF'}]`, pageWidth - 50, yPos);
+      
+      // Tabela de condições comerciais
+      yPos = 90;
+      const tableHeaders = ['Vendedor', 'Trabalho', 'Forma de Envio', 'Condições de Envio', 'Data de Entrega', 'Condições de Pagamento', 'Data de Vencimento'];
+      const colWidths = [25, 25, 25, 30, 25, 35, 25];
+      let xPos = 20;
+      
+      // Header da tabela
+      pdf.setFillColor(240, 240, 240);
+      pdf.rect(20, yPos - 5, pageWidth - 40, 12, 'F');
+      pdf.setFontSize(8);
       pdf.setFont(undefined, 'bold');
-      pdf.text('🚤 PRODUTO SELECIONADO', 20, yPos + 7);
       
+      tableHeaders.forEach((header, index) => {
+        pdf.text(header, xPos + 2, yPos + 3);
+        xPos += colWidths[index];
+      });
+      
+      // Dados da tabela
+      yPos += 12;
+      pdf.rect(20, yPos - 5, pageWidth - 40, 12, 'S');
+      pdf.setFont(undefined, 'normal');
+      xPos = 20;
+      const tableData = ['Ventura Marine', 'Embarcação', 'Retirada', 'CIF', new Date(Date.now() + 45 * 24 * 60 * 60 * 1000).toLocaleDateString('pt-BR'), configData.payment?.option === 'avista' ? 'À Vista' : 'Financiado', new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toLocaleDateString('pt-BR')];
+      
+      tableData.forEach((data, index) => {
+        pdf.text(data, xPos + 2, yPos + 3);
+        xPos += colWidths[index];
+      });
+      
+      // Tabela principal de produtos
       yPos += 25;
-      pdf.setTextColor(0, 0, 0);
-      pdf.setFontSize(12);
-      pdf.setFont(undefined, 'bold');
-      pdf.text(`Modelo: ${configData.model}`, 20, yPos);
+      const productHeaders = ['Qtde.', 'Nº Item', 'Descrição', 'Preço Unitário', 'Desconto', 'Total da Linha'];
+      const productColWidths = [20, 25, 80, 30, 25, 30];
       
-      yPos += 8;
+      // Header da tabela de produtos
+      pdf.setFillColor(240, 240, 240);
+      pdf.rect(20, yPos - 5, pageWidth - 40, 12, 'F');
+      pdf.setFont(undefined, 'bold');
+      xPos = 20;
+      
+      productHeaders.forEach((header, index) => {
+        pdf.text(header, xPos + 2, yPos + 3);
+        xPos += productColWidths[index];
+      });
+      
+      // Linha do produto principal
+      yPos += 12;
+      pdf.rect(20, yPos - 5, pageWidth - 40, 15, 'S');
       pdf.setFont(undefined, 'normal');
-      pdf.text(`Categoria: ${configData.category.charAt(0).toUpperCase() + configData.category.slice(1)}`, 20, yPos);
+      xPos = 20;
       
-      yPos += 8;
-      pdf.text(`Cor Selecionada: ${selectedColor?.name}`, 20, yPos);
+      const productData = [
+        '1',
+        '001',
+        `${configData.model} - Cor: ${selectedColor?.name}`,
+        `R$ ${basePrice.toLocaleString('pt-BR')}`,
+        'R$ 0,00',
+        `R$ ${basePrice.toLocaleString('pt-BR')}`
+      ];
       
-      yPos += 8;
-      pdf.setFont(undefined, 'bold');
-      pdf.setTextColor(0, 102, 204);
-      pdf.text(`Preço Base: R$ ${basePrice.toLocaleString('pt-BR')}`, 20, yPos);
+      productData.forEach((data, index) => {
+        if (index === 2) { // Descrição
+          const lines = pdf.splitTextToSize(data, productColWidths[index] - 4);
+          pdf.text(lines, xPos + 2, yPos + 3);
+        } else {
+          pdf.text(data, xPos + 2, yPos + 3);
+        }
+        xPos += productColWidths[index];
+      });
       
-      // Seção de Acessórios
-      if (selectedAccessories.length > 0) {
-        yPos += 20;
-        drawRect(15, yPos - 5, pageWidth - 30, 20, 'rgb(0, 150, 0)');
-        pdf.setTextColor(255, 255, 255);
-        pdf.setFontSize(14);
-        pdf.setFont(undefined, 'bold');
-        pdf.text('⚙️ ACESSÓRIOS INCLUSOS', 20, yPos + 7);
+      // Acessórios
+      selectedAccessories.forEach(accessory => {
+        yPos += 15;
+        pdf.rect(20, yPos - 5, pageWidth - 40, 15, 'S');
+        xPos = 20;
         
-        yPos += 25;
-        pdf.setTextColor(0, 0, 0);
-        pdf.setFontSize(11);
-        pdf.setFont(undefined, 'normal');
+        const accessoryData = [
+          '1',
+          `${selectedAccessories.indexOf(accessory) + 2}`.padStart(3, '0'),
+          accessory.name,
+          `R$ ${accessory.price.toLocaleString('pt-BR')}`,
+          'R$ 0,00',
+          `R$ ${accessory.price.toLocaleString('pt-BR')}`
+        ];
         
-        selectedAccessories.forEach(accessory => {
-          pdf.text(`• ${accessory.name}`, 25, yPos);
-          pdf.setFont(undefined, 'bold');
-          pdf.setTextColor(0, 150, 0);
-          pdf.text(`R$ ${accessory.price.toLocaleString('pt-BR')}`, pageWidth - 60, yPos);
-          pdf.setFont(undefined, 'normal');
-          pdf.setTextColor(0, 0, 0);
-          yPos += 8;
+        accessoryData.forEach((data, index) => {
+          pdf.text(data, xPos + 2, yPos + 3);
+          xPos += productColWidths[index];
         });
-      }
+      });
       
-      // Resumo Financeiro
-      yPos += 15;
-      drawRect(15, yPos - 5, pageWidth - 30, 20, 'rgb(204, 102, 0)');
-      pdf.setTextColor(255, 255, 255);
-      pdf.setFontSize(14);
-      pdf.setFont(undefined, 'bold');
-      pdf.text('💰 RESUMO FINANCEIRO', 20, yPos + 7);
+      // Resumo financeiro
+      yPos += 30;
+      const summaryItems = [
+        ['Desconto Total', 'R$ 0,00'],
+        ['Subtotal', `R$ ${totalPrice.toLocaleString('pt-BR')}`],
+        ['Imposto sobre Vendas', 'R$ 0,00'],
+        ['Total', `R$ ${totalPrice.toLocaleString('pt-BR')}`]
+      ];
       
-      yPos += 25;
-      drawRect(15, yPos - 5, pageWidth - 30, 40, 'rgb(255, 251, 235)');
-      
-      pdf.setTextColor(0, 0, 0);
-      pdf.setFontSize(11);
-      pdf.setFont(undefined, 'normal');
-      pdf.text(`Preço Base:`, 20, yPos + 5);
-      pdf.text(`R$ ${basePrice.toLocaleString('pt-BR')}`, pageWidth - 70, yPos + 5);
-      
-      if (accessoriesTotal > 0) {
-        pdf.text(`Acessórios:`, 20, yPos + 15);
-        pdf.text(`R$ ${accessoriesTotal.toLocaleString('pt-BR')}`, pageWidth - 70, yPos + 15);
-        yPos += 10;
-      }
-      
-      // Linha divisória
-      pdf.setLineWidth(0.5);
-      pdf.setDrawColor(204, 102, 0);
-      pdf.line(20, yPos + 20, pageWidth - 20, yPos + 20);
-      
-      pdf.setFontSize(14);
-      pdf.setFont(undefined, 'bold');
-      pdf.setTextColor(204, 102, 0);
-      pdf.text(`VALOR TOTAL:`, 20, yPos + 30);
-      pdf.text(`R$ ${totalPrice.toLocaleString('pt-BR')}`, pageWidth - 70, yPos + 30);
-      
-      // Forma de Pagamento
-      if (configData.payment?.calculation) {
-        yPos += 55;
-        drawRect(15, yPos - 5, pageWidth - 30, 20, 'rgb(102, 0, 204)');
-        pdf.setTextColor(255, 255, 255);
-        pdf.setFontSize(14);
-        pdf.setFont(undefined, 'bold');
-        pdf.text('💳 CONDIÇÕES DE PAGAMENTO', 20, yPos + 7);
-        
-        yPos += 25;
-        drawRect(15, yPos - 5, pageWidth - 30, 35, 'rgb(248, 245, 255)');
-        
-        pdf.setTextColor(0, 0, 0);
-        pdf.setFontSize(11);
-        pdf.setFont(undefined, 'normal');
-        pdf.text(`Modalidade: ${configData.payment.option === 'avista' ? 'À Vista' : 'Financiado'}`, 20, yPos + 5);
-        
-        if (configData.payment.option !== "avista") {
-          pdf.text(`Entrada: R$ ${configData.payment.calculation.downPayment?.toLocaleString('pt-BR')}`, 20, yPos + 15);
-          pdf.text(`Parcelas: ${configData.payment.calculation.installments}x de R$ ${configData.payment.calculation.installmentValue?.toLocaleString('pt-BR')}`, 20, yPos + 25);
+      summaryItems.forEach(([label, value], index) => {
+        const isTotal = index === summaryItems.length - 1;
+        if (isTotal) {
+          pdf.setFillColor(240, 240, 240);
+          pdf.rect(pageWidth - 80, yPos - 3, 60, 10, 'F');
+          pdf.setFont(undefined, 'bold');
         }
         
-        pdf.setFont(undefined, 'bold');
-        pdf.setTextColor(102, 0, 204);
-        pdf.text(`Valor Final: R$ ${configData.payment.calculation.total?.toLocaleString('pt-BR')}`, pageWidth - 80, yPos + 25);
-      }
+        pdf.text(label, pageWidth - 75, yPos + 3);
+        pdf.text(value, pageWidth - 25, yPos + 3);
+        
+        if (!isTotal) pdf.setFont(undefined, 'normal');
+        yPos += 12;
+      });
       
-      // Dados do Cliente
-      yPos += 55;
-      drawRect(15, yPos - 5, pageWidth - 30, 20, 'rgb(0, 102, 102)');
-      pdf.setTextColor(255, 255, 255);
-      pdf.setFontSize(14);
-      pdf.setFont(undefined, 'bold');
-      pdf.text('👤 DADOS DO CLIENTE', 20, yPos + 7);
-      
-      yPos += 25;
-      drawRect(15, yPos - 5, pageWidth - 30, 45, 'rgb(240, 255, 255)');
-      
-      pdf.setTextColor(0, 0, 0);
-      pdf.setFontSize(10);
-      pdf.setFont(undefined, 'normal');
-      pdf.text(`Nome: ${configData.personalInfo?.nomeCompleto || 'N/A'}`, 20, yPos + 5);
-      pdf.text(`E-mail: ${configData.personalInfo?.email || 'N/A'}`, 20, yPos + 15);
-      pdf.text(`Telefone: ${configData.personalInfo?.telefone || 'N/A'}`, 20, yPos + 25);
-      pdf.text(`CPF: ${configData.personalInfo?.cpf || 'N/A'}`, 20, yPos + 35);
-      pdf.text(`Endereço: ${configData.personalInfo?.cidade || 'N/A'}/${configData.personalInfo?.estado || 'N/A'} - CEP: ${configData.personalInfo?.cep || 'N/A'}`, 20, yPos + 45);
-      
-      // Footer estilizado
-      yPos += 65;
-      drawRect(0, yPos, pageWidth, 30, 'rgb(50, 50, 50)');
+      // Condições e observações
+      yPos += 20;
       pdf.setFontSize(9);
-      pdf.setTextColor(255, 255, 255);
-      pdf.text('Ventura Marine - Excelência em Embarcações', 20, yPos + 12);
-      pdf.text('vendas@venturamarine.com.br | (11) 99999-9999', 20, yPos + 22);
-      pdf.text('www.venturamarine.com.br', pageWidth - 60, yPos + 17);
+      pdf.setFont(undefined, 'normal');
+      pdf.text('Cotação elaborada por:', 20, yPos);
+      yPos += 8;
+      
+      const conditions = 'Esta é uma cotação referente às mercadorias acima citadas e está sujeita às condições indicadas acima. (Desconto se condições pertinentes a estes preços e qualquer termo adicional for acordo. Confirme incluir as contingências que afetarão a cotação.)';
+      const conditionLines = pdf.splitTextToSize(conditions, pageWidth - 40);
+      pdf.text(conditionLines, 20, yPos);
+      yPos += conditionLines.length * 5 + 10;
+      
+      pdf.text('Se estiver de acordo com esta cotação, assine aqui e devolva-a: ________________________', 20, yPos);
+      
+      // Footer centralizado
+      yPos = pageHeight - 30;
+      pdf.setFontSize(8);
+      pdf.setTextColor(100, 100, 100);
+      pdf.text('Agradecemos a preferência', pageWidth / 2, yPos, { align: 'center' });
+      yPos += 10;
+      pdf.text('[Ventura Marine] [vendas@venturamarine.com.br] [Cidade, Estado, CEP] [Telefone: (00) 0000-0000] [Fax: (00) 0000-0000] [Email]', pageWidth / 2, yPos, { align: 'center' });
       
       // Salvar PDF
-      pdf.save(`orcamento-ventura-marine-${quoteId.replace('#', '')}.pdf`);
+      pdf.save(`cotacao-ventura-marine-${quoteId.replace('#', '')}.pdf`);
       
-      toast.success("PDF estilizado gerado com sucesso!");
+      toast.success("Cotação profissional gerada com sucesso!");
     } catch (error) {
       console.error("Erro ao gerar PDF:", error);
       toast.error("Erro ao gerar PDF. Tente novamente.");
