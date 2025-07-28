@@ -18,7 +18,7 @@ const MonteOSeu = () => {
       description: "Configure seu barco ideal com acabamentos personalizados",
       icon: Ship,
       color: "bg-primary",
-      models: ["V195 Comfort", "V235 Premium", "V255 Luxury"]
+      models: ["V195 Comfort", "V235 Premium", "V255 Luxury", "V275 Sport", "V295 Executive", "V315 Deluxe", "V185 Classic", "V205 Family", "V225 Adventure"]
     },
     {
       id: "quadriciclos" as ProductCategory,
