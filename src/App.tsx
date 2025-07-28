@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import VenturaMarine from "./pages/VenturaMarine";
 import Pontoon250 from "./pages/Pontoon250";
+import V195Comfort from "./pages/V195Comfort";
 import NotFound from "./pages/NotFound";
 import Navbar from "./components/Navbar";
 
@@ -22,6 +23,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/ventura-marine" element={<VenturaMarine />} />
           <Route path="/pontoon250" element={<Pontoon250 />} />
+          <Route path="/v195comfort" element={<V195Comfort />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
