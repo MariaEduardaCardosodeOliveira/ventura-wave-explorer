@@ -254,14 +254,7 @@ const MonteOSeu = () => {
                         {category.description}
                       </p>
                       
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-1">
-                          <div className="flex text-yellow-400">
-                            {"★".repeat(5)}
-                          </div>
-                          <span className="text-xs text-muted-foreground ml-1">4.8</span>
-                        </div>
-                        
+                      <div className="flex justify-center">
                         <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
                           Configurar
                           <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
