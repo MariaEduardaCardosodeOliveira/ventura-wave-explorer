@@ -16,11 +16,19 @@ const Hero = () => {
       </div>
 
       {/* Content Container */}
-      <div className="relative z-10 container mx-auto px-6 flex items-center h-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center w-full">
-          {/* Left Side - Main Title */}
+      <div className="relative z-10 container mx-auto px-6 h-full">
+        {/* Upper Right - Description */}
+        <div className="absolute top-20 right-6 max-w-md">
+          <p className="text-white text-lg font-light leading-relaxed opacity-90">
+            Explore breathtaking destinations with our premium yacht rentals. 
+            Comfort, elegance, and adventure just a booking away!
+          </p>
+        </div>
+
+        {/* Bottom Left - Main Title */}
+        <div className="absolute bottom-20 left-6">
           <div className="text-white space-y-8">
-            <h1 className="text-6xl lg:text-7xl font-bold leading-tight">
+            <h1 className="text-6xl lg:text-7xl font-bold font-poppins leading-tight">
               Discover Luxury
               <br />
               <span className="text-5xl lg:text-6xl font-light">at The Sea</span>
@@ -32,14 +40,6 @@ const Hero = () => {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
-          </div>
-
-          {/* Right Side - Description */}
-          <div className="text-white space-y-6 lg:pl-12">
-            <p className="text-lg lg:text-xl font-light leading-relaxed opacity-90">
-              Explore breathtaking destinations with our premium yacht rentals. 
-              Comfort, elegance, and adventure just a booking away!
-            </p>
           </div>
         </div>
       </div>
