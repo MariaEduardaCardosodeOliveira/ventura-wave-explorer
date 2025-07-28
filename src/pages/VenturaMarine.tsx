@@ -132,7 +132,11 @@ const VenturaMarine = () => {
       <CardContent className="p-6">
         <CardTitle className="text-xl mb-2 text-primary">{model.name}</CardTitle>
         <p className="text-muted-foreground mb-4">{model.specs}</p>
-        <Button variant="outline" className="w-full group-hover:bg-primary group-hover:text-primary-foreground">
+        <Button 
+          variant="outline" 
+          className="w-full group-hover:bg-primary group-hover:text-primary-foreground"
+          onClick={() => window.location.href = model.link}
+        >
           Ver mais
           <ArrowRight className="w-4 h-4 ml-2" />
         </Button>
