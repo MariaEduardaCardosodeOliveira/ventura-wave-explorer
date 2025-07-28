@@ -85,89 +85,6 @@ const MonteOSeu = () => {
         </div>
       </section>
 
-      {/* Product Selection */}
-      <section className="section-padding bg-background">
-        <div className="container mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
-              Escolha seu Modelo
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Selecione o modelo que deseja configurar
-            </p>
-          </div>
-
-          {/* Category Filters */}
-          <div className="flex flex-wrap justify-center gap-4 mb-12">
-            {categories.map((category) => {
-              const IconComponent = category.icon;
-              return (
-                <div key={category.id} className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 text-sm">
-                  <IconComponent className="w-4 h-4" />
-                  <span>{category.title}</span>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Product Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {categories.map((category) => 
-              category.models.map((model, index) => {
-                const IconComponent = category.icon;
-                return (
-                  <Card 
-                    key={`${category.id}-${index}`}
-                    className="card-elegant group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden"
-                    onClick={() => navigate(`/monte-o-seu/${category.id}/${model.toLowerCase().replace(/\s+/g, '-')}`)}
-                  >
-                    <div className="relative">
-                      <div className={`h-48 ${category.color} flex items-center justify-center relative overflow-hidden`}>
-                        <IconComponent className="w-16 h-16 text-white/20 absolute" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                        <div className="relative z-10 text-center text-white">
-                          <IconComponent className="w-12 h-12 mx-auto mb-2" />
-                          <p className="text-sm font-medium">{category.subtitle}</p>
-                        </div>
-                      </div>
-                      <div className="absolute top-4 right-4">
-                        <div className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-xs text-white">
-                          {category.title}
-                        </div>
-                      </div>
-                    </div>
-                    
-                    <CardContent className="p-6">
-                      <h3 className="text-lg font-bold mb-2 text-primary group-hover:text-accent transition-colors">
-                        {model}
-                      </h3>
-                      
-                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
-                        {category.description}
-                      </p>
-                      
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-1">
-                          <div className="flex text-yellow-400">
-                            {"★".repeat(5)}
-                          </div>
-                          <span className="text-xs text-muted-foreground ml-1">4.8</span>
-                        </div>
-                        
-                        <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                          Configurar
-                          <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })
-            )}
-          </div>
-        </div>
-      </section>
-
       {/* Process Overview */}
       <section className="section-padding bg-gradient-to-br from-primary/5 via-secondary/10 to-accent/5">
         <div className="container mx-auto">
@@ -275,6 +192,90 @@ const MonteOSeu = () => {
           </div>
         </div>
       </section>
+
+      {/* Product Selection */}
+      <section className="section-padding bg-background">
+        <div className="container mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary">
+              Escolha seu Modelo
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Selecione o modelo que deseja configurar
+            </p>
+          </div>
+
+          {/* Category Filters */}
+          <div className="flex flex-wrap justify-center gap-4 mb-12">
+            {categories.map((category) => {
+              const IconComponent = category.icon;
+              return (
+                <div key={category.id} className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/50 text-sm">
+                  <IconComponent className="w-4 h-4" />
+                  <span>{category.title}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Product Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            {categories.map((category) => 
+              category.models.map((model, index) => {
+                const IconComponent = category.icon;
+                return (
+                  <Card 
+                    key={`${category.id}-${index}`}
+                    className="card-elegant group cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-lg overflow-hidden"
+                    onClick={() => navigate(`/monte-o-seu/${category.id}/${model.toLowerCase().replace(/\s+/g, '-')}`)}
+                  >
+                    <div className="relative">
+                      <div className={`h-48 ${category.color} flex items-center justify-center relative overflow-hidden`}>
+                        <IconComponent className="w-16 h-16 text-white/20 absolute" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                        <div className="relative z-10 text-center text-white">
+                          <IconComponent className="w-12 h-12 mx-auto mb-2" />
+                          <p className="text-sm font-medium">{category.subtitle}</p>
+                        </div>
+                      </div>
+                      <div className="absolute top-4 right-4">
+                        <div className="bg-white/20 backdrop-blur-sm px-2 py-1 rounded text-xs text-white">
+                          {category.title}
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <CardContent className="p-6">
+                      <h3 className="text-lg font-bold mb-2 text-primary group-hover:text-accent transition-colors">
+                        {model}
+                      </h3>
+                      
+                      <p className="text-sm text-muted-foreground mb-4 line-clamp-2">
+                        {category.description}
+                      </p>
+                      
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-1">
+                          <div className="flex text-yellow-400">
+                            {"★".repeat(5)}
+                          </div>
+                          <span className="text-xs text-muted-foreground ml-1">4.8</span>
+                        </div>
+                        
+                        <Button size="sm" className="group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                          Configurar
+                          <ArrowRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })
+            )}
+          </div>
+        </div>
+      </section>
+
 
       {/* CTA Section */}
       <section className="section-padding bg-primary text-primary-foreground">
