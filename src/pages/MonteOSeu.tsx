@@ -174,7 +174,7 @@ const MonteOSeu = () => {
                 <p className="text-sm text-muted-foreground">{item.desc}</p>
                 {index < 4 && (
                   <div className="hidden md:block w-full h-0.5 bg-primary/20 mt-6 relative">
-                    <ArrowRight className="w-4 h-4 text-primary absolute right-0 top-1/2 -translate-y-1/2 translate-x-2" />
+                    <ArrowRight className="w-4 h-4 text-primary absolute right-0 top-1/2 translate-y-2 translate-x-2" />
                   </div>
                 )}
               </div>
