@@ -6,9 +6,10 @@ const Hero = () => {
     <section className="relative h-screen flex items-center overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-no-repeat"
         style={{
           backgroundImage: `url(${heroImage})`,
+          backgroundPosition: '50% 50%',
         }}
       >
         {/* Subtle Overlay */}
