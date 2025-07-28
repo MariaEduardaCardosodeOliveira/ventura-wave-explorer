@@ -22,27 +22,6 @@ const Categories = () => {
       icon: Zap,
       image: "Imagem de moto elétrica",
       link: "/ventura-electric"
-    },
-    {
-      title: "Consórcio",
-      description: "Realize o sonho da sua embarcação com facilidade",
-      icon: Users,
-      image: "Ilustração de contrato/gráfico",
-      link: "/consorcio"
-    },
-    {
-      title: "Monte o Seu",
-      description: "Personalize sua embarcação ou quadriciclo",
-      icon: Settings,
-      image: "Imagem de customização",
-      link: "/monte-o-seu"
-    },
-    {
-      title: "Blog",
-      description: "Dicas, novidades e histórias do mundo Ventura",
-      icon: FileText,
-      image: "Imagem de artigo/marina",
-      link: "/blog"
     }
   ];
 
