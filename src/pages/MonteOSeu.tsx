@@ -86,7 +86,7 @@ const MonteOSeu = () => {
       </section>
 
       {/* Process Overview */}
-      <section className="section-padding bg-gradient-to-br from-primary/5 via-secondary/10 to-accent/5">
+      <section className="section-padding bg-background">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6 text-primary">
