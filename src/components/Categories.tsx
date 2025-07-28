@@ -82,10 +82,10 @@ const Categories = () => {
                   <p className="text-muted-foreground leading-relaxed">
                     {category.description}
                   </p>
-                  <button className="btn-secondary text-sm group">
+                  <a href={category.link} className="btn-secondary text-sm group">
                     Explorar
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </button>
+                  </a>
                 </div>
               </div>
             );
