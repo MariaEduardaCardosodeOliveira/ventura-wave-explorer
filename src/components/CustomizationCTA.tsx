@@ -49,27 +49,25 @@ const CustomizationCTA = () => {
           {/* Visual Element */}
           <div className="fade-in" style={{ animationDelay: '0.2s' }}>
             <div className="relative h-96 lg:h-[500px]">
-              {/* Barco Image Placeholder - Top Left */}
+              {/* Barco Image - Top Left */}
               <div className="absolute top-0 left-0 w-64 h-40 lg:w-80 lg:h-48">
-                <div className="image-placeholder h-full bg-primary-foreground/10 border-primary-foreground/20 rounded-lg">
-                  <div className="text-center text-primary-foreground/60 flex flex-col items-center justify-center h-full">
-                    <Settings className="w-8 h-8 mx-auto mb-2" />
-                    <span className="text-xs">Imagem de barco customizado</span>
-                  </div>
-                </div>
+                <img 
+                  src="/lovable-uploads/2b55ab1d-d1fa-46ab-ba89-63ee0543a77b.png"
+                  alt="Barco customizado"
+                  className="w-full h-full object-cover rounded-lg shadow-lg"
+                />
                 <div className="absolute -top-2 -right-2 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-xl">
                   <Palette className="w-6 h-6 text-accent-foreground" />
                 </div>
               </div>
 
-              {/* Quadriciclo Image Placeholder - Bottom Right */}
+              {/* Quadriciclo Image - Bottom Right */}
               <div className="absolute bottom-0 right-0 w-64 h-40 lg:w-80 lg:h-48">
-                <div className="image-placeholder h-full bg-primary-foreground/10 border-primary-foreground/20 rounded-lg">
-                  <div className="text-center text-primary-foreground/60 flex flex-col items-center justify-center h-full">
-                    <Settings className="w-8 h-8 mx-auto mb-2" />
-                    <span className="text-xs">Imagem de quadriciclo customizado</span>
-                  </div>
-                </div>
+                <img 
+                  src="/lovable-uploads/7d002674-ece2-4cd0-90b2-ff2774204eb2.png"
+                  alt="Quadriciclo customizado"
+                  className="w-full h-full object-cover rounded-lg shadow-lg"
+                />
                 <div className="absolute -bottom-2 -left-2 w-12 h-12 bg-primary-foreground/20 backdrop-blur-sm rounded-full flex items-center justify-center">
                   <Settings className="w-6 h-6 text-primary-foreground" />
                 </div>
