@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ConfiguratorLayout } from "@/components/configurator/ConfiguratorLayout";
 import { ProductCustomization } from "@/components/configurator/ProductCustomization";
 import { PaymentOptions } from "@/components/configurator/PaymentOptions";
+import { PersonalInfo } from "@/components/configurator/PersonalInfo";
 
 interface ConfigurationData {
   model: string;
@@ -42,7 +43,17 @@ const ProductConfigurator = () => {
       case 3:
         return configData.payment !== null;
       case 4:
-        return configData.personalInfo !== null;
+        return configData.personalInfo !== null && 
+               configData.personalInfo.nomeCompleto && 
+               configData.personalInfo.email && 
+               configData.personalInfo.telefone && 
+               configData.personalInfo.cpf &&
+               configData.personalInfo.logradouro &&
+               configData.personalInfo.numero &&
+               configData.personalInfo.bairro &&
+               configData.personalInfo.cidade &&
+               configData.personalInfo.estado &&
+               configData.personalInfo.cep;
       case 5:
         return true;
       default:
@@ -78,6 +89,13 @@ const ProductConfigurator = () => {
     setConfigData(prev => ({
       ...prev,
       payment
+    }));
+  };
+
+  const handlePersonalInfoChange = (personalInfo: any) => {
+    setConfigData(prev => ({
+      ...prev,
+      personalInfo
     }));
   };
 
@@ -118,14 +136,9 @@ const ProductConfigurator = () => {
       
       case 4:
         return (
-          <div className="text-center py-12">
-            <h2 className="text-2xl font-bold text-primary mb-4">
-              Informações Pessoais
-            </h2>
-            <p className="text-muted-foreground">
-              Em desenvolvimento...
-            </p>
-          </div>
+          <PersonalInfo
+            onDataChange={handlePersonalInfoChange}
+          />
         );
       
       case 5:
