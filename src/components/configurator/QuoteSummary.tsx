@@ -2,6 +2,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { toast } from "sonner";
+import jsPDF from "jspdf";
 import { 
   Download, 
   Send, 
@@ -55,8 +57,129 @@ export const QuoteSummary = ({ configData, basePrice }: QuoteSummaryProps) => {
   const totalPrice = basePrice + accessoriesTotal;
 
   const handleGeneratePDF = () => {
-    // Implementar geração de PDF
-    console.log("Gerando PDF...", configData);
+    try {
+      const pdf = new jsPDF();
+      const quoteId = `#VM${Date.now().toString().slice(-6)}`;
+      
+      // Header
+      pdf.setFontSize(20);
+      pdf.setTextColor(0, 102, 204);
+      pdf.text('VENTURA MARINE', 20, 30);
+      
+      pdf.setFontSize(16);
+      pdf.setTextColor(0, 0, 0);
+      pdf.text('Orçamento de Embarcação', 20, 45);
+      
+      pdf.setFontSize(12);
+      pdf.text(`ID: ${quoteId}`, 20, 55);
+      pdf.text(`Data: ${new Date().toLocaleDateString('pt-BR')}`, 20, 65);
+      
+      // Dados do Produto
+      let yPos = 85;
+      pdf.setFontSize(14);
+      pdf.setFont(undefined, 'bold');
+      pdf.text('PRODUTO SELECIONADO', 20, yPos);
+      yPos += 10;
+      
+      pdf.setFontSize(11);
+      pdf.setFont(undefined, 'normal');
+      pdf.text(`Modelo: ${configData.model}`, 20, yPos);
+      yPos += 8;
+      pdf.text(`Categoria: ${configData.category}`, 20, yPos);
+      yPos += 8;
+      pdf.text(`Cor: ${selectedColor?.name}`, 20, yPos);
+      yPos += 8;
+      pdf.text(`Preço Base: R$ ${basePrice.toLocaleString('pt-BR')}`, 20, yPos);
+      
+      // Acessórios
+      if (selectedAccessories.length > 0) {
+        yPos += 15;
+        pdf.setFont(undefined, 'bold');
+        pdf.text('ACESSÓRIOS', 20, yPos);
+        yPos += 10;
+        
+        pdf.setFont(undefined, 'normal');
+        selectedAccessories.forEach(accessory => {
+          pdf.text(`• ${accessory.name}: R$ ${accessory.price.toLocaleString('pt-BR')}`, 25, yPos);
+          yPos += 8;
+        });
+      }
+      
+      // Resumo Financeiro
+      yPos += 15;
+      pdf.setFont(undefined, 'bold');
+      pdf.text('RESUMO FINANCEIRO', 20, yPos);
+      yPos += 10;
+      
+      pdf.setFont(undefined, 'normal');
+      pdf.text(`Subtotal: R$ ${basePrice.toLocaleString('pt-BR')}`, 20, yPos);
+      yPos += 8;
+      
+      if (accessoriesTotal > 0) {
+        pdf.text(`Acessórios: R$ ${accessoriesTotal.toLocaleString('pt-BR')}`, 20, yPos);
+        yPos += 8;
+      }
+      
+      pdf.setFont(undefined, 'bold');
+      pdf.setFontSize(12);
+      pdf.text(`TOTAL: R$ ${totalPrice.toLocaleString('pt-BR')}`, 20, yPos);
+      
+      // Forma de Pagamento
+      if (configData.payment?.calculation) {
+        yPos += 20;
+        pdf.setFontSize(14);
+        pdf.text('FORMA DE PAGAMENTO', 20, yPos);
+        yPos += 10;
+        
+        pdf.setFontSize(11);
+        pdf.setFont(undefined, 'normal');
+        pdf.text(`Modalidade: ${configData.payment.option}`, 20, yPos);
+        yPos += 8;
+        
+        if (configData.payment.option !== "avista") {
+          pdf.text(`Entrada: R$ ${configData.payment.calculation.downPayment?.toLocaleString('pt-BR')}`, 20, yPos);
+          yPos += 8;
+          pdf.text(`Parcelas: ${configData.payment.calculation.installments}x de R$ ${configData.payment.calculation.installmentValue?.toLocaleString('pt-BR')}`, 20, yPos);
+          yPos += 8;
+        }
+        
+        pdf.setFont(undefined, 'bold');
+        pdf.text(`Valor Final: R$ ${configData.payment.calculation.total?.toLocaleString('pt-BR')}`, 20, yPos);
+      }
+      
+      // Dados do Cliente
+      yPos += 20;
+      pdf.setFontSize(14);
+      pdf.setFont(undefined, 'bold');
+      pdf.text('DADOS DO CLIENTE', 20, yPos);
+      yPos += 10;
+      
+      pdf.setFontSize(11);
+      pdf.setFont(undefined, 'normal');
+      pdf.text(`Nome: ${configData.personalInfo?.nomeCompleto || 'N/A'}`, 20, yPos);
+      yPos += 8;
+      pdf.text(`E-mail: ${configData.personalInfo?.email || 'N/A'}`, 20, yPos);
+      yPos += 8;
+      pdf.text(`Telefone: ${configData.personalInfo?.telefone || 'N/A'}`, 20, yPos);
+      yPos += 8;
+      pdf.text(`CPF: ${configData.personalInfo?.cpf || 'N/A'}`, 20, yPos);
+      yPos += 8;
+      pdf.text(`Cidade: ${configData.personalInfo?.cidade || 'N/A'}/${configData.personalInfo?.estado || 'N/A'}`, 20, yPos);
+      
+      // Footer
+      pdf.setFontSize(10);
+      pdf.setTextColor(128, 128, 128);
+      pdf.text('Orçamento válido por 30 dias', 20, 270);
+      pdf.text('Ventura Marine - vendas@venturamarine.com.br', 20, 280);
+      
+      // Salvar PDF
+      pdf.save(`orcamento-ventura-marine-${quoteId.replace('#', '')}.pdf`);
+      
+      toast.success("PDF gerado com sucesso!");
+    } catch (error) {
+      console.error("Erro ao gerar PDF:", error);
+      toast.error("Erro ao gerar PDF. Tente novamente.");
+    }
   };
 
   const handleSendWhatsApp = () => {
