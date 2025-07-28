@@ -11,8 +11,11 @@ const Navbar = () => {
 
   const navigation = [
     { name: "Ventura Marine", href: "/ventura-marine" },
-    { name: "Adventure", href: "/adventure" },
-    { name: "Electric", href: "/electric" },
+    { name: "Ventura Adventure", href: "/ventura-adventure" },
+    { name: "Ventura Electric", href: "/ventura-electric" },
+    { name: "Pontoon 250", href: "/pontoon250" },
+    { name: "V195 Comfort", href: "/v195comfort" },
+    { name: "Monte o Seu", href: "/monte-o-seu" },
   ];
 
   const isActive = (href: string) => location.pathname === href;
