@@ -54,7 +54,7 @@ const CustomizationCTA = () => {
                 <img 
                   src="/lovable-uploads/2b55ab1d-d1fa-46ab-ba89-63ee0543a77b.png"
                   alt="Barco customizado"
-                  className="w-full h-full object-cover rounded-lg shadow-lg"
+                  className="w-full h-full object-cover rounded-lg"
                 />
                 <div className="absolute -top-2 -right-2 w-12 h-12 bg-accent rounded-full flex items-center justify-center shadow-xl">
                   <Palette className="w-6 h-6 text-accent-foreground" />
