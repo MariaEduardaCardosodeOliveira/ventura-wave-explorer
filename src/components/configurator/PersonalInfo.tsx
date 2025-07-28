@@ -2,15 +2,17 @@ import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { User, Building, MapPin, MessageSquare } from "lucide-react";
+import { User, Building, MapPin, MessageSquare, ChevronLeft, ChevronRight } from "lucide-react";
 
 interface PersonalInfoProps {
   onDataChange: (data: any) => void;
 }
 
 export const PersonalInfo = ({ onDataChange }: PersonalInfoProps) => {
+  const [currentTab, setCurrentTab] = useState("pessoais");
   const [formData, setFormData] = useState({
     // Dados Pessoais
     nomeCompleto: "",
@@ -40,10 +42,31 @@ export const PersonalInfo = ({ onDataChange }: PersonalInfoProps) => {
     observacoesVendedor: ""
   });
 
+  const tabs = [
+    { id: "pessoais", name: "Pessoais", icon: User },
+    { id: "empresariais", name: "Empresariais", icon: Building },
+    { id: "endereco", name: "Endereço", icon: MapPin },
+    { id: "observacoes", name: "Observações", icon: MessageSquare }
+  ];
+
+  const currentTabIndex = tabs.findIndex(tab => tab.id === currentTab);
+
   const handleInputChange = (field: string, value: string) => {
     const newData = { ...formData, [field]: value };
     setFormData(newData);
     onDataChange(newData);
+  };
+
+  const goToNextTab = () => {
+    if (currentTabIndex < tabs.length - 1) {
+      setCurrentTab(tabs[currentTabIndex + 1].id);
+    }
+  };
+
+  const goToPrevTab = () => {
+    if (currentTabIndex > 0) {
+      setCurrentTab(tabs[currentTabIndex - 1].id);
+    }
   };
 
   const formatCPF = (value: string) => {
@@ -91,24 +114,17 @@ export const PersonalInfo = ({ onDataChange }: PersonalInfoProps) => {
         </p>
       </div>
 
-      <Tabs defaultValue="pessoais" className="w-full">
+      <Tabs value={currentTab} onValueChange={setCurrentTab} className="w-full">
         <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="pessoais" className="flex items-center gap-2">
-            <User className="w-4 h-4" />
-            Pessoais
-          </TabsTrigger>
-          <TabsTrigger value="empresariais" className="flex items-center gap-2">
-            <Building className="w-4 h-4" />
-            Empresariais
-          </TabsTrigger>
-          <TabsTrigger value="endereco" className="flex items-center gap-2">
-            <MapPin className="w-4 h-4" />
-            Endereço
-          </TabsTrigger>
-          <TabsTrigger value="observacoes" className="flex items-center gap-2">
-            <MessageSquare className="w-4 h-4" />
-            Observações
-          </TabsTrigger>
+          {tabs.map((tab) => {
+            const IconComponent = tab.icon;
+            return (
+              <TabsTrigger key={tab.id} value={tab.id} className="flex items-center gap-2">
+                <IconComponent className="w-4 h-4" />
+                {tab.name}
+              </TabsTrigger>
+            );
+          })}
         </TabsList>
 
         <TabsContent value="pessoais" className="space-y-6">
@@ -387,6 +403,33 @@ export const PersonalInfo = ({ onDataChange }: PersonalInfoProps) => {
             </Card>
           </div>
         </TabsContent>
+
+        {/* Tab Navigation Buttons */}
+        <div className="flex justify-between mt-6">
+          <Button
+            variant="outline"
+            onClick={goToPrevTab}
+            disabled={currentTabIndex === 0}
+            className="flex items-center gap-2"
+          >
+            <ChevronLeft className="w-4 h-4" />
+            Anterior
+          </Button>
+          
+          <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <span>{currentTabIndex + 1} de {tabs.length}</span>
+          </div>
+          
+          <Button
+            variant="outline"
+            onClick={goToNextTab}
+            disabled={currentTabIndex === tabs.length - 1}
+            className="flex items-center gap-2"
+          >
+            Próximo
+            <ChevronRight className="w-4 h-4" />
+          </Button>
+        </div>
       </Tabs>
 
       {/* Validation Summary */}
