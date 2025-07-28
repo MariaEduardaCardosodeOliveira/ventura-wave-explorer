@@ -66,7 +66,7 @@ const CustomizationCTA = () => {
                 <img 
                   src="/lovable-uploads/7d002674-ece2-4cd0-90b2-ff2774204eb2.png"
                   alt="Quadriciclo customizado"
-                  className="w-full h-full object-cover rounded-lg shadow-lg"
+                  className="w-full h-full object-cover rounded-lg"
                 />
                 <div className="absolute -bottom-2 -left-2 w-12 h-12 bg-primary-foreground/20 backdrop-blur-sm rounded-full flex items-center justify-center">
                   <Settings className="w-6 h-6 text-primary-foreground" />
