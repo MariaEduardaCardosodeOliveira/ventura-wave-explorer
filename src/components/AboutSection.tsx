@@ -51,12 +51,11 @@ const AboutSection = () => {
 
           {/* Image Placeholder */}
           <div className="fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="image-placeholder h-96 lg:h-[500px]">
-              <div className="text-center">
-                <Users className="w-16 h-16 mx-auto mb-4 text-accent" />
-                <span className="text-lg">Imagem da fábrica, equipe ou clientes<br />usando produtos Ventura</span>
-              </div>
-            </div>
+            <img 
+              src="/lovable-uploads/852baeb5-f7de-4dde-92be-0b7fca1788d9.png" 
+              alt="Fábrica Ventura Boats - Vista aérea das instalações" 
+              className="h-96 lg:h-[500px] w-full object-cover rounded-lg shadow-lg"
+            />
           </div>
         </div>
       </div>
