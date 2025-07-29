@@ -164,16 +164,16 @@ const ExpandableCard = ({
           </div>
 
           {/* Action Buttons */}
-          <div className="grid grid-cols-3 gap-2">
-            <Button size="sm" variant="outline" className="flex items-center gap-1 text-xs" onClick={() => window.location.href = model.link}>
+          <div className="grid grid-cols-3 gap-1">
+            <Button size="sm" variant="outline" className="flex items-center justify-center gap-1 text-xs w-full px-1" onClick={() => window.location.href = model.link}>
               <Eye size={12} />
               Ver
             </Button>
-            <Button size="sm" variant="outline" className="flex items-center gap-1 text-xs" onClick={() => window.location.href = `/monte-o-seu/${model.categoryType}/${model.name.toLowerCase().replace(/\s+/g, '-')}`}>
+            <Button size="sm" variant="outline" className="flex items-center justify-center gap-1 text-xs w-full px-1" onClick={() => window.location.href = `/monte-o-seu/${model.categoryType}/${model.name.toLowerCase().replace(/\s+/g, '-')}`}>
               <Settings size={12} />
               Montar
             </Button>
-            <Button size="sm" variant="outline" className="flex items-center gap-1 text-xs" onClick={() => window.open('https://wa.me/5511999999999', '_blank')}>
+            <Button size="sm" variant="outline" className="flex items-center justify-center gap-1 text-xs w-full px-1" onClick={() => window.open('https://wa.me/5511999999999', '_blank')}>
               <MessageCircle size={12} />
               WhatsApp
             </Button>
