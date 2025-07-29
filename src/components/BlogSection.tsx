@@ -15,6 +15,19 @@ const BlogSection = () => {
     excerpt: "Conheça os melhores destinos para explorar com seu quadriciclo Ventura Adventure.",
     date: "5 de Janeiro, 2024"
   }];
-  return;
+  return (
+    <div className="py-16 bg-background">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Blog & Novidades
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Fique por dentro das últimas novidades, dicas e tendências do mundo náutico e off-road.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
 };
 export default BlogSection;

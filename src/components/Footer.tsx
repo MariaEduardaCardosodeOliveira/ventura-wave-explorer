@@ -2,12 +2,13 @@ import { Instagram, Youtube, Phone } from "lucide-react";
 
 const Footer = () => {
   const quickLinks = [
-    { name: "Início", href: "#hero" },
-    { name: "Marine", href: "#marine" },
-    { name: "Adventure", href: "#adventure" },
-    { name: "Electric", href: "#electric" },
-    { name: "Consórcio", href: "#consorcio" },
-    { name: "Contato", href: "#contato" }
+    { name: "Início", href: "/" },
+    { name: "Marine", href: "/ventura-marine" },
+    { name: "Adventure", href: "/ventura-adventure" },
+    { name: "Electric", href: "/ventura-electric" },
+    { name: "Pontoon 250", href: "/pontoon250" },
+    { name: "V195 Comfort", href: "/v195comfort" },
+    { name: "Monte o Seu", href: "/monte-o-seu" }
   ];
 
   return (

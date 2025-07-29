@@ -12,7 +12,7 @@ const productModels = [{
   specifications: "8.5m • 12 pessoas • 300HP",
   image: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
   hoverImage: "/src/assets/hero-boat.jpg",
-  link: "/pontoon-250",
+  link: "/pontoon250",
   tag: {
     label: "Mais Vendido",
     icon: Flame,
@@ -34,7 +34,7 @@ const productModels = [{
   specifications: "5.8m • 8 pessoas • 200HP",
   image: "/src/assets/marine-boat.jpg",
   hoverImage: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
-  link: "/v195-comfort",
+  link: "/v195comfort",
   tag: {
     label: "Destaque do Mês",
     icon: Lightbulb,

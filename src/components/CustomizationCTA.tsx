@@ -40,10 +40,10 @@ const CustomizationCTA = () => {
               </div>
             </div>
 
-            <button className="btn-hero bg-accent hover:bg-accent/90">
+            <a href="/monte-o-seu" className="btn-hero bg-accent hover:bg-accent/90">
               Começar
               <ArrowRight className="w-5 h-5" />
-            </button>
+            </a>
           </div>
 
           {/* Visual Element */}
