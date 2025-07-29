@@ -13,14 +13,19 @@ import WhatsAppFloat from "@/components/WhatsAppFloat";
 const Index = () => {
   return (
     <div className="min-h-screen">
+      {/* Test Content */}
+      <div className="p-8 bg-red-500 text-white">
+        <h1>TESTE - App está funcionando</h1>
+      </div>
+      
       {/* Hero Section */}
       <HeroSlider />
       
       {/* Product Models Slider */}
-      <ProductModelsSlider />
+      {/* <ProductModelsSlider /> */}
       
       {/* Categories Slider */}
-      <CategoriesSlider />
+      {/* <CategoriesSlider /> */}
       
       {/* Categories Section */}
       <Categories />
@@ -29,7 +34,7 @@ const Index = () => {
       <AboutSection />
       
       {/* Blog Highlights Slider */}
-      <BlogHighlightsSlider />
+      {/* <BlogHighlightsSlider /> */}
       
       {/* Blog Section */}
       <BlogSection />
