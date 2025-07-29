@@ -77,7 +77,7 @@ const HeroSlider = () => {
                 <div className="relative z-10 h-screen flex items-end">
                   <div className="container mx-auto px-6 pb-20">
                     <div className="max-w-4xl">
-                      <div className="space-y-8 text-white opacity-0 translate-y-8 animate-[fadeInUp_1.2s_ease-out_0.3s_forwards]">
+                      <div className="space-y-8 text-white opacity-0 translate-y-8 animate-fadeInUp">
                         <div className="space-y-6">
                           <h1 className="text-3xl lg:text-5xl xl:text-6xl font-bold font-poppins leading-tight tracking-tight text-white" style={{
                         fontWeight: 700
