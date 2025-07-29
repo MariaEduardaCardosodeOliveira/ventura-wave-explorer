@@ -50,17 +50,16 @@ const Navbar = () => {
           <div>
             <Button
               variant="ghost"
-              size="icon"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
               className={cn(
-                "rounded-full w-12 h-12 transition-colors",
+                "rounded-full w-14 h-14 transition-colors p-0 flex items-center justify-center",
                 isScrolled 
                   ? "text-primary hover:bg-primary/10" 
                   : "text-white hover:bg-white/10"
               )}
             >
-              {isOpen ? <X className="h-10 w-10" /> : <Menu className="h-10 w-10" />}
+              {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
             </Button>
           </div>
         </div>
