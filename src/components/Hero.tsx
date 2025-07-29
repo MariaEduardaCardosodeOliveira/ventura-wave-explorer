@@ -22,8 +22,9 @@ const Hero = () => {
         {/* Upper Right - Description */}
         <div className="absolute top-32 right-6 max-w-md">
           <p className="text-white text-lg font-light leading-relaxed opacity-90">
-            Explore breathtaking destinations with our premium yacht rentals. 
-            Comfort, elegance, and adventure just a booking away!
+            Navegue pelos mares com estilo e conforto. Nossas embarcações 
+            combinam tecnologia de ponta com design elegante para proporcionar 
+            experiências náuticas inesquecíveis.
           </p>
         </div>
 
@@ -31,14 +32,14 @@ const Hero = () => {
         <div className="absolute bottom-32 left-6">
           <div className="text-white space-y-8">
             <h1 className="text-6xl lg:text-7xl font-bold font-poppins leading-tight">
-              Discover Luxury
+              Ventura Marine
               <br />
-              <span className="text-5xl lg:text-6xl font-light">at The Sea</span>
+              <span className="text-5xl lg:text-6xl font-light">Sua Aventura Começa Aqui</span>
             </h1>
             
             <div className="space-y-6">
               <button className="inline-flex items-center space-x-3 bg-white text-slate-900 px-8 py-4 rounded-full font-medium hover:bg-slate-100 transition-colors group">
-                <span>Explore Our Collection</span>
+                <span>Conheça Nossa Coleção</span>
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
             </div>
