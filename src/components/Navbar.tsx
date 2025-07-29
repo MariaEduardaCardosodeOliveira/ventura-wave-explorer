@@ -53,7 +53,7 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
               className={cn(
-                "rounded-full !w-8 !h-8 transition-colors p-0 flex items-center justify-center",
+                "rounded-full !w-10 !h-10 transition-colors p-0 flex items-center justify-center",
                 isScrolled 
                   ? "text-primary hover:bg-primary/10" 
                   : "text-white hover:bg-white/10"
