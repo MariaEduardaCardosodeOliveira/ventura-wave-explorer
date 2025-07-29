@@ -357,7 +357,7 @@ const ProductModelsSlider = () => {
             ))}
           </CarouselContent>
 
-          <div className="flex justify-center mt-8 gap-4">
+          <div className="flex justify-center mt-16 gap-4">
             <CarouselPrevious className="relative inset-auto translate-y-0 bg-secondary hover:bg-secondary/80 text-secondary-foreground" />
             <CarouselNext className="relative inset-auto translate-y-0 bg-secondary hover:bg-secondary/80 text-secondary-foreground" />
           </div>

@@ -44,6 +44,8 @@ const BlogHighlightsSlider = () => {
     stopOnInteraction: true,
     stopOnMouseEnter: true
   });
-  return;
+  return (
+    <div>Blog Highlights Slider</div>
+  );
 };
 export default BlogHighlightsSlider;
