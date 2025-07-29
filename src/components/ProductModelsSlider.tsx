@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Flame, Star, Lightbulb, Crown } from "lucide-react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ArrowRight, Flame, Star, Lightbulb, Crown, Eye, Settings, MessageCircle, Weight, Users, Zap } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 
 const productModels = [
@@ -18,6 +19,14 @@ const productModels = [
       label: "Mais Vendido",
       icon: Flame,
       color: "bg-red-500/90"
+    },
+    techSpecs: {
+      length: "8,5m",
+      passengers: "12",
+      maxPower: "300HP",
+      weight: "1375kg",
+      fuel: "Gasolina",
+      draft: "0,6m"
     }
   },
   {
@@ -33,6 +42,14 @@ const productModels = [
       label: "Destaque do Mês",
       icon: Lightbulb,
       color: "bg-amber-500/90"
+    },
+    techSpecs: {
+      length: "5,8m",
+      passengers: "8",
+      maxPower: "200HP",
+      weight: "1120kg",
+      fuel: "Gasolina",
+      draft: "0,5m"
     }
   },
   {
@@ -48,6 +65,14 @@ const productModels = [
       label: "Lançamento",
       icon: Star,
       color: "bg-blue-500/90"
+    },
+    techSpecs: {
+      length: "3,2m",
+      passengers: "4",
+      maxPower: "800cc",
+      weight: "680kg",
+      fuel: "Gasolina",
+      draft: "4x4"
     }
   },
   {
@@ -63,6 +88,14 @@ const productModels = [
       label: "Premium",
       icon: Crown,
       color: "bg-purple-500/90"
+    },
+    techSpecs: {
+      length: "3,5m",
+      passengers: "2",
+      maxPower: "Elétrico",
+      weight: "320kg",
+      fuel: "Bateria",
+      draft: "2h autonomia"
     }
   }
 ];
@@ -78,6 +111,217 @@ const getCategoryBackground = (categoryType: string) => {
     default:
       return 'bg-card';
   }
+};
+
+// Component para Card Expandível
+const ExpandableCard = ({ model }: { model: typeof productModels[0] }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  
+  return (
+    <div 
+      className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 ease-in-out"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Image Container */}
+      <div className="relative h-64 overflow-hidden">
+        {/* Tag de Destaque */}
+        <div className={`absolute top-4 right-4 ${model.tag.color} backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 z-10 shadow-lg`}>
+          <model.tag.icon size={12} />
+          {model.tag.label}
+        </div>
+
+        {/* Default Image */}
+        <img
+          src={model.image}
+          alt={model.name}
+          className={`w-full h-full object-cover transition-all duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
+        />
+        {/* Hover Image */}
+        <img
+          src={model.hoverImage}
+          alt={`${model.name} hover`}
+          className={`absolute inset-0 w-full h-full object-cover transition-all duration-300 ${isHovered ? 'opacity-100 scale-105' : 'opacity-0'}`}
+        />
+        {/* Overlay Gradient */}
+        <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-all duration-300 ${isHovered ? 'from-black/50' : ''}`}></div>
+      </div>
+
+      {/* Basic Content */}
+      <div className="p-6">
+        <div className="space-y-3">
+          <h3 className={`text-xl font-bold transition-colors duration-300 ${isHovered ? 'text-primary' : 'text-foreground'}`}>
+            {model.name}
+          </h3>
+          <p className="text-sm text-primary font-medium">
+            {model.category}
+          </p>
+          <p className="text-sm text-muted-foreground">
+            {model.specifications}
+          </p>
+        </div>
+
+        {/* Desktop: Expanded Content on Hover */}
+        <div className={`hidden md:block transition-all duration-300 ease-in-out ${isHovered ? 'max-h-96 opacity-100 mt-4' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+          {/* Tech Specs */}
+          <div className="bg-muted/30 rounded-lg p-4 mb-4">
+            <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+              <Settings size={16} />
+              Ficha Técnica
+            </h4>
+            <div className="grid grid-cols-2 gap-2 text-xs">
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Comprimento:</span>
+                <span className="font-medium">{model.techSpecs.length}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Passageiros:</span>
+                <span className="font-medium">{model.techSpecs.passengers}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Potência:</span>
+                <span className="font-medium">{model.techSpecs.maxPower}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-muted-foreground">Peso:</span>
+                <span className="font-medium">{model.techSpecs.weight}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="grid grid-cols-3 gap-2">
+            <Button 
+              size="sm" 
+              variant="outline" 
+              className="flex items-center gap-1 text-xs"
+              onClick={() => window.location.href = model.link}
+            >
+              <Eye size={12} />
+              Detalhes
+            </Button>
+            <Button 
+              size="sm" 
+              variant="outline"
+              className="flex items-center gap-1 text-xs"
+              onClick={() => window.location.href = '/monte-o-seu'}
+            >
+              <Settings size={12} />
+              Monte
+            </Button>
+            <Button 
+              size="sm" 
+              variant="outline"
+              className="flex items-center gap-1 text-xs"
+              onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
+            >
+              <MessageCircle size={12} />
+              WhatsApp
+            </Button>
+          </div>
+        </div>
+
+        {/* Mobile: Dialog Trigger */}
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="md:hidden mt-4 w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground rounded-full">
+              Ver Mais
+              <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-md">
+            <div className="space-y-4">
+              {/* Images */}
+              <div className="grid grid-cols-2 gap-2">
+                <img src={model.image} alt={model.name} className="w-full h-32 object-cover rounded-lg" />
+                <img src={model.hoverImage} alt={`${model.name} 2`} className="w-full h-32 object-cover rounded-lg" />
+              </div>
+              
+              {/* Title and Category */}
+              <div>
+                <h3 className="text-xl font-bold text-foreground">{model.name}</h3>
+                <p className="text-sm text-primary font-medium">{model.category}</p>
+              </div>
+
+              {/* Tech Specs */}
+              <div className="bg-muted/30 rounded-lg p-4">
+                <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
+                  <Settings size={16} />
+                  Ficha Técnica Completa
+                </h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Comprimento:</span>
+                    <span className="font-medium">{model.techSpecs.length}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Passageiros:</span>
+                    <span className="font-medium">{model.techSpecs.passengers}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Potência Máx:</span>
+                    <span className="font-medium">{model.techSpecs.maxPower}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Peso:</span>
+                    <span className="font-medium">{model.techSpecs.weight}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Combustível:</span>
+                    <span className="font-medium">{model.techSpecs.fuel}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Calado:</span>
+                    <span className="font-medium">{model.techSpecs.draft}</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="grid grid-cols-3 gap-2">
+                <Button 
+                  size="sm" 
+                  variant="outline" 
+                  className="flex items-center gap-1"
+                  onClick={() => window.location.href = model.link}
+                >
+                  <Eye size={14} />
+                  Ver Detalhes
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant="outline"
+                  className="flex items-center gap-1"
+                  onClick={() => window.location.href = '/monte-o-seu'}
+                >
+                  <Settings size={14} />
+                  Monte o Seu
+                </Button>
+                <Button 
+                  size="sm" 
+                  variant="outline"
+                  className="flex items-center gap-1"
+                  onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
+                >
+                  <MessageCircle size={14} />
+                  WhatsApp
+                </Button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+
+        {/* Desktop: Standard Button (hidden on hover) */}
+        <Button 
+          className={`hidden md:block mt-4 w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-300 ${isHovered ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+          onClick={() => window.location.href = model.link}
+        >
+          Ver Mais
+          <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
+        </Button>
+      </div>
+    </div>
+  );
 };
 
 const ProductModelsSlider = () => {
@@ -113,59 +357,7 @@ const ProductModelsSlider = () => {
           <CarouselContent className="-ml-4">
             {productModels.map((model) => (
               <CarouselItem key={model.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-700 hover:scale-[1.03] transform-gpu">
-                  {/* Image Container */}
-                  <div className="relative h-64 overflow-hidden">
-                    {/* Tag de Destaque */}
-                    <div className={`absolute top-4 right-4 ${model.tag.color} backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 z-10 shadow-lg animate-pulse hover:animate-none transition-all duration-300`}>
-                      <model.tag.icon size={12} />
-                      {model.tag.label}
-                    </div>
-
-                    {/* Default Image */}
-                    <img
-                      src={model.image}
-                      alt={model.name}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:opacity-0"
-                    />
-                    {/* Hover Image */}
-                    <img
-                      src={model.hoverImage}
-                      alt={`${model.name} hover`}
-                      className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
-                    />
-                    {/* Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/50 transition-all duration-700"></div>
-                    
-                    {/* Floating Badge */}
-                    <div className="absolute bottom-4 left-4 bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 translate-y-2 group-hover:translate-y-0">
-                      Premium Quality
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-6">
-                    <div className="space-y-3">
-                      <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                        {model.name}
-                      </h3>
-                      <p className="text-sm text-primary font-medium">
-                        {model.category}
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        {model.specifications}
-                      </p>
-                    </div>
-
-                    <Button 
-                      className="mt-4 w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground rounded-full"
-                      onClick={() => window.location.href = model.link}
-                    >
-                      Ver Mais
-                      <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
-                    </Button>
-                  </div>
-                </div>
+                <ExpandableCard model={model} />
               </CarouselItem>
             ))}
           </CarouselContent>
