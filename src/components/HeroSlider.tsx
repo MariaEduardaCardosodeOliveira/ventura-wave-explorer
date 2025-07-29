@@ -97,7 +97,7 @@ const HeroSlider = () => {
                             Ver Modelos
                             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                           </Button>
-                          <Button variant="outline" size="lg" className="group border-2 border-blue-900 text-blue-900 bg-transparent hover:bg-blue-900 hover:text-white hover:border-blue-800 transition-all duration-300 font-semibold px-8 py-3 text-base rounded-full">
+                          <Button variant="outline" size="lg" className="group border-2 border-blue-900 text-white bg-transparent hover:bg-blue-900 hover:text-white hover:border-blue-800 transition-all duration-300 font-semibold px-8 py-3 text-base rounded-full">
                             <Settings className="w-4 h-4 mr-2 transition-transform group-hover:rotate-45" />
                             Monte o Seu
                           </Button>
