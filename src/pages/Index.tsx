@@ -1,6 +1,9 @@
 import HeroSlider from "@/components/HeroSlider";
+import ProductModelsSlider from "@/components/ProductModelsSlider";
+import CategoriesSlider from "@/components/CategoriesSlider";
 import Categories from "@/components/Categories";
 import AboutSection from "@/components/AboutSection";
+import BlogHighlightsSlider from "@/components/BlogHighlightsSlider";
 import BlogSection from "@/components/BlogSection";
 import CustomizationCTA from "@/components/CustomizationCTA";
 import DealerCTA from "@/components/DealerCTA";
@@ -13,11 +16,20 @@ const Index = () => {
       {/* Hero Section */}
       <HeroSlider />
       
+      {/* Product Models Slider */}
+      <ProductModelsSlider />
+      
+      {/* Categories Slider */}
+      <CategoriesSlider />
+      
       {/* Categories Section */}
       <Categories />
       
       {/* About Section */}
       <AboutSection />
+      
+      {/* Blog Highlights Slider */}
+      <BlogHighlightsSlider />
       
       {/* Blog Section */}
       <BlogSection />
