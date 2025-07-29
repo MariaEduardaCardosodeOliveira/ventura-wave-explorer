@@ -106,12 +106,15 @@ const ExpandableCard = ({ model }: { model: typeof productModels[0] }) => {
   
   return (
     <div 
-      className={`group relative bg-card rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ease-in-out transform-gpu ${
+      className={`group relative bg-card rounded-2xl shadow-lg transition-all duration-500 ease-in-out transform-gpu ${
         isHovered 
-          ? 'scale-110 shadow-2xl shadow-primary/30 z-50' 
+          ? 'scale-105 shadow-2xl shadow-primary/30 z-50' 
           : 'hover:shadow-xl hover:shadow-primary/20 z-10'
       }`}
-      style={{ transformOrigin: 'center center' }}
+      style={{ 
+        transformOrigin: 'center center',
+        overflow: isHovered ? 'visible' : 'hidden'
+      }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
