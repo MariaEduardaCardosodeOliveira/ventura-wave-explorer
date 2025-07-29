@@ -62,17 +62,17 @@ const HeroSlider = () => {
     <section className="relative h-screen w-full overflow-hidden">
       <Carousel
         setApi={setApi}
-        className="w-full h-full"
+        className="w-full h-screen"
         plugins={[autoplayPlugin]}
         opts={{
           align: "start",
           loop: true,
         }}
       >
-        <CarouselContent className="h-full">
+        <CarouselContent className="h-screen">
           {slides.map((slide, index) => (
-            <CarouselItem key={slide.id} className="h-full">
-              <div className="relative h-full w-full">
+            <CarouselItem key={slide.id} className="h-screen">
+              <div className="relative h-screen w-full">
                 {/* Background Image */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -85,7 +85,7 @@ const HeroSlider = () => {
                 </div>
 
                 {/* Content */}
-                <div className="relative z-10 h-full flex items-center">
+                <div className="relative z-10 h-screen flex items-center">
                   <div className="container mx-auto px-6">
                     <div className="max-w-2xl">
                       <div className="space-y-6 text-white">
