@@ -9,6 +9,7 @@ const productModels = [
     id: 1,
     name: "Pontoon 250",
     category: "Pontoon Series",
+    categoryType: "marine",
     specifications: "8.5m • 12 pessoas • 300HP",
     image: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
     hoverImage: "/src/assets/hero-boat.jpg",
@@ -23,6 +24,7 @@ const productModels = [
     id: 2,
     name: "V195 Comfort",
     category: "Runabout Series", 
+    categoryType: "marine",
     specifications: "5.8m • 8 pessoas • 200HP",
     image: "/src/assets/marine-boat.jpg",
     hoverImage: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
@@ -37,6 +39,7 @@ const productModels = [
     id: 3,
     name: "Adventure UTV",
     category: "Adventure Series",
+    categoryType: "adventure",
     specifications: "4x4 • 800cc • Todo Terreno",
     image: "/lovable-uploads/f2adefb4-7c40-4c04-a99d-ffcda84194f2.png",
     hoverImage: "/src/assets/adventure-utv.jpg",
@@ -51,6 +54,7 @@ const productModels = [
     id: 4,
     name: "Electric JetSki",
     category: "Electric Series",
+    categoryType: "electric",
     specifications: "100% Elétrico • 50km/h • 2h autonomia",
     image: "/lovable-uploads/4ecac867-4e3b-41a2-a52c-988669e1bc11.png",
     hoverImage: "/src/assets/electric-jetski.jpg",
@@ -62,6 +66,19 @@ const productModels = [
     }
   }
 ];
+
+const getCategoryBackground = (categoryType: string) => {
+  switch (categoryType) {
+    case 'marine':
+      return 'bg-gradient-to-br from-blue-900 via-blue-600 to-white';
+    case 'adventure':
+      return 'bg-gradient-to-br from-gray-700 via-gray-500 to-gray-300 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] relative before:absolute before:inset-0 before:bg-[url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23000000" fill-opacity="0.1"%3E%3Cpath d="M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] before:opacity-30';
+    case 'electric':
+      return 'bg-gradient-to-br from-white via-green-100 to-lime-400';
+    default:
+      return 'bg-card';
+  }
+};
 
 const ProductModelsSlider = () => {
   const [api, setApi] = useState<any>();
@@ -96,7 +113,7 @@ const ProductModelsSlider = () => {
           <CarouselContent className="-ml-4">
             {productModels.map((model) => (
               <CarouselItem key={model.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-700 hover:scale-[1.03] transform-gpu">
+                <div className={`group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-700 hover:scale-[1.03] transform-gpu ${getCategoryBackground(model.categoryType)}`}>
                   {/* Image Container */}
                   <div className="relative h-64 overflow-hidden">
                     {/* Tag de Destaque */}
