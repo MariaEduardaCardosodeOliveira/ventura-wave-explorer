@@ -113,7 +113,7 @@ const ProductModelsSlider = () => {
           <CarouselContent className="-ml-4">
             {productModels.map((model) => (
               <CarouselItem key={model.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className={`group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-700 hover:scale-[1.03] transform-gpu ${getCategoryBackground(model.categoryType)}`}>
+                <div className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-700 hover:scale-[1.03] transform-gpu">
                   {/* Image Container */}
                   <div className="relative h-64 overflow-hidden">
                     {/* Tag de Destaque */}
