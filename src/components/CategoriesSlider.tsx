@@ -29,6 +29,6 @@ const categories = [{
 }];
 const CategoriesSlider = () => {
   const [api, setApi] = useState<any>();
-  return;
+  return <div></div>;
 };
 export default CategoriesSlider;
