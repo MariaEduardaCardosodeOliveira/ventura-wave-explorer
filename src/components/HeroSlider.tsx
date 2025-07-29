@@ -67,31 +67,6 @@ const HeroSlider = () => {
     }
   };
 
-  const DecorativeShape = ({ shape }: { shape: string }) => {
-    if (shape === "waves") {
-      return (
-        <div className="absolute top-1/4 right-1/4 opacity-10">
-          <Waves className="w-32 h-32 text-white animate-pulse" />
-        </div>
-      );
-    }
-    if (shape === "mountains") {
-      return (
-        <div className="absolute top-1/3 right-1/3 opacity-10">
-          <Mountain className="w-28 h-28 text-white animate-pulse" />
-        </div>
-      );
-    }
-    if (shape === "lightning") {
-      return (
-        <div className="absolute top-1/2 right-1/4 opacity-10">
-          <Zap className="w-24 h-24 text-white animate-pulse" />
-        </div>
-      );
-    }
-    return null;
-  };
-
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <Carousel
@@ -116,9 +91,6 @@ const HeroSlider = () => {
                 >
                   {/* Lateral Gradient Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/40 to-slate-900/10"></div>
-                  
-                  {/* Decorative Shapes */}
-                  <DecorativeShape shape={slide.decorativeShape} />
                 </div>
 
                 {/* Content with Animations */}
@@ -127,29 +99,29 @@ const HeroSlider = () => {
                     <div className="max-w-3xl">
                       <div className="space-y-8 text-white animate-fade-in">
                         <div className="space-y-6">
-                          <h1 className="text-6xl lg:text-8xl font-extrabold font-poppins leading-tight tracking-tight bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
+                          <h1 className="text-4xl lg:text-6xl font-extrabold font-poppins leading-tight tracking-tight bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
                             {slide.title}
                           </h1>
-                          <p className="text-2xl lg:text-3xl font-light leading-relaxed opacity-95 tracking-wide">
+                          <p className="text-lg lg:text-xl font-light leading-relaxed opacity-95 tracking-wide">
                             {slide.subtitle}
                           </p>
                         </div>
                         
-                        <div className="flex flex-col sm:flex-row gap-6 pt-8">
+                        <div className="flex flex-col sm:flex-row gap-4 pt-6">
                           <Button 
                             size="lg"
-                            className="group bg-gradient-to-r from-blue-900 to-orange-600 text-white border-0 hover:from-blue-800 hover:to-orange-500 hover:scale-110 hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-500 font-bold px-10 py-5 text-lg rounded-full relative overflow-hidden"
+                            className="group bg-gradient-to-r from-blue-900 to-orange-600 text-white border-0 hover:from-blue-800 hover:to-orange-500 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 font-semibold px-6 py-3 text-base rounded-full relative overflow-hidden"
                           >
-                            <ArrowRight className="w-5 h-5 mr-3 transition-transform group-hover:translate-x-1" />
+                            <ArrowRight className="w-4 h-4 mr-2 transition-transform group-hover:translate-x-1" />
                             {slide.button1}
                             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                           </Button>
                           <Button 
                             variant="outline"
                             size="lg"
-                            className="group border-2 border-white/80 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-slate-900 hover:scale-110 hover:shadow-2xl hover:shadow-white/30 transition-all duration-500 font-bold px-10 py-5 text-lg rounded-full"
+                            className="group border-2 border-white/80 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-slate-900 hover:scale-105 hover:shadow-lg hover:shadow-white/30 transition-all duration-300 font-semibold px-6 py-3 text-base rounded-full"
                           >
-                            <Play className="w-5 h-5 mr-3 transition-transform group-hover:scale-110" />
+                            <Play className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
                             {slide.button2}
                           </Button>
                         </div>
