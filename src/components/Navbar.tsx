@@ -53,13 +53,13 @@ const Navbar = () => {
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
               className={cn(
-                "rounded-full !w-16 !h-16 transition-colors p-0 flex items-center justify-center",
+                "rounded-full !w-8 !h-8 transition-colors p-0 flex items-center justify-center",
                 isScrolled 
                   ? "text-primary hover:bg-primary/10" 
                   : "text-white hover:bg-white/10"
               )}
             >
-              {isOpen ? <X className="!w-10 !h-10" /> : <Menu className="!w-10 !h-10" />}
+              {isOpen ? <X className="!w-5 !h-5" /> : <Menu className="!w-5 !h-5" />}
             </Button>
           </div>
         </div>
