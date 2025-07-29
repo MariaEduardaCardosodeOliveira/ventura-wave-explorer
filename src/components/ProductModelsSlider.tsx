@@ -4,120 +4,107 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { ArrowRight, Flame, Star, Lightbulb, Crown, Eye, Settings, MessageCircle, Weight, Users, Zap } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
-
-const productModels = [
-  {
-    id: 1,
-    name: "Pontoon 250",
-    category: "Pontoon Series",
-    categoryType: "marine",
-    specifications: "8.5m • 12 pessoas • 300HP",
-    image: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
-    hoverImage: "/src/assets/hero-boat.jpg",
-    link: "/pontoon-250",
-    tag: {
-      label: "Mais Vendido",
-      icon: Flame,
-      color: "bg-red-500/90"
-    },
-    techSpecs: {
-      length: "8,5m",
-      passengers: "12",
-      maxPower: "300HP",
-      weight: "1375kg",
-      fuel: "Gasolina",
-      draft: "0,6m"
-    }
+const productModels = [{
+  id: 1,
+  name: "Pontoon 250",
+  category: "Pontoon Series",
+  categoryType: "marine",
+  specifications: "8.5m • 12 pessoas • 300HP",
+  image: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
+  hoverImage: "/src/assets/hero-boat.jpg",
+  link: "/pontoon-250",
+  tag: {
+    label: "Mais Vendido",
+    icon: Flame,
+    color: "bg-red-500/90"
   },
-  {
-    id: 2,
-    name: "V195 Comfort",
-    category: "Runabout Series", 
-    categoryType: "marine",
-    specifications: "5.8m • 8 pessoas • 200HP",
-    image: "/src/assets/marine-boat.jpg",
-    hoverImage: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
-    link: "/v195-comfort",
-    tag: {
-      label: "Destaque do Mês",
-      icon: Lightbulb,
-      color: "bg-amber-500/90"
-    },
-    techSpecs: {
-      length: "5,8m",
-      passengers: "8",
-      maxPower: "200HP",
-      weight: "1120kg",
-      fuel: "Gasolina",
-      draft: "0,5m"
-    }
-  },
-  {
-    id: 3,
-    name: "Adventure UTV",
-    category: "Adventure Series",
-    categoryType: "adventure",
-    specifications: "4x4 • 800cc • Todo Terreno",
-    image: "/lovable-uploads/f2adefb4-7c40-4c04-a99d-ffcda84194f2.png",
-    hoverImage: "/src/assets/adventure-utv.jpg",
-    link: "/adventure-utv",
-    tag: {
-      label: "Lançamento",
-      icon: Star,
-      color: "bg-blue-500/90"
-    },
-    techSpecs: {
-      length: "3,2m",
-      passengers: "4",
-      maxPower: "800cc",
-      weight: "680kg",
-      fuel: "Gasolina",
-      draft: "4x4"
-    }
-  },
-  {
-    id: 4,
-    name: "Electric JetSki",
-    category: "Electric Series",
-    categoryType: "electric",
-    specifications: "100% Elétrico • 50km/h • 2h autonomia",
-    image: "/lovable-uploads/4ecac867-4e3b-41a2-a52c-988669e1bc11.png",
-    hoverImage: "/src/assets/electric-jetski.jpg",
-    link: "/electric-jetski",
-    tag: {
-      label: "Premium",
-      icon: Crown,
-      color: "bg-purple-500/90"
-    },
-    techSpecs: {
-      length: "3,5m",
-      passengers: "2",
-      maxPower: "Elétrico",
-      weight: "320kg",
-      fuel: "Bateria",
-      draft: "2h autonomia"
-    }
+  techSpecs: {
+    length: "8,5m",
+    passengers: "12",
+    maxPower: "300HP",
+    weight: "1375kg",
+    fuel: "Gasolina",
+    draft: "0,6m"
   }
-];
+}, {
+  id: 2,
+  name: "V195 Comfort",
+  category: "Runabout Series",
+  categoryType: "marine",
+  specifications: "5.8m • 8 pessoas • 200HP",
+  image: "/src/assets/marine-boat.jpg",
+  hoverImage: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
+  link: "/v195-comfort",
+  tag: {
+    label: "Destaque do Mês",
+    icon: Lightbulb,
+    color: "bg-amber-500/90"
+  },
+  techSpecs: {
+    length: "5,8m",
+    passengers: "8",
+    maxPower: "200HP",
+    weight: "1120kg",
+    fuel: "Gasolina",
+    draft: "0,5m"
+  }
+}, {
+  id: 3,
+  name: "Adventure UTV",
+  category: "Adventure Series",
+  categoryType: "adventure",
+  specifications: "4x4 • 800cc • Todo Terreno",
+  image: "/lovable-uploads/f2adefb4-7c40-4c04-a99d-ffcda84194f2.png",
+  hoverImage: "/src/assets/adventure-utv.jpg",
+  link: "/adventure-utv",
+  tag: {
+    label: "Lançamento",
+    icon: Star,
+    color: "bg-blue-500/90"
+  },
+  techSpecs: {
+    length: "3,2m",
+    passengers: "4",
+    maxPower: "800cc",
+    weight: "680kg",
+    fuel: "Gasolina",
+    draft: "4x4"
+  }
+}, {
+  id: 4,
+  name: "Electric JetSki",
+  category: "Electric Series",
+  categoryType: "electric",
+  specifications: "100% Elétrico • 50km/h • 2h autonomia",
+  image: "/lovable-uploads/4ecac867-4e3b-41a2-a52c-988669e1bc11.png",
+  hoverImage: "/src/assets/electric-jetski.jpg",
+  link: "/electric-jetski",
+  tag: {
+    label: "Premium",
+    icon: Crown,
+    color: "bg-purple-500/90"
+  },
+  techSpecs: {
+    length: "3,5m",
+    passengers: "2",
+    maxPower: "Elétrico",
+    weight: "320kg",
+    fuel: "Bateria",
+    draft: "2h autonomia"
+  }
+}];
 
 // Component para Card Expandível
-const ExpandableCard = ({ model }: { model: typeof productModels[0] }) => {
+const ExpandableCard = ({
+  model
+}: {
+  model: typeof productModels[0];
+}) => {
   const [isHovered, setIsHovered] = useState(false);
-  
-  return (
-    <div 
-      className={`group relative bg-card rounded-2xl shadow-lg transition-all duration-500 ease-in-out transform-gpu ${
-        isHovered 
-          ? 'scale-105 shadow-2xl shadow-primary/30 z-50' 
-          : 'hover:shadow-xl hover:shadow-primary/20 z-10'
-      }`}
-      style={{ 
-        transformOrigin: 'center center',
-        overflow: isHovered ? 'visible' : 'hidden'
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+  return <div className={`group relative bg-card rounded-2xl shadow-lg transition-all duration-500 ease-in-out transform-gpu ${isHovered ? 'scale-105 shadow-2xl shadow-primary/30 z-50' : 'hover:shadow-xl hover:shadow-primary/20 z-10'}`} style={{
+    transformOrigin: 'center center',
+    overflow: isHovered ? 'visible' : 'hidden'
+  }} onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       {/* Image Container */}
       <div className="relative h-64 overflow-hidden">
         {/* Tag de Destaque */}
@@ -127,17 +114,9 @@ const ExpandableCard = ({ model }: { model: typeof productModels[0] }) => {
         </div>
 
         {/* Default Image */}
-        <img
-          src={model.image}
-          alt={model.name}
-          className={`w-full h-full object-cover transition-all duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`}
-        />
+        <img src={model.image} alt={model.name} className={`w-full h-full object-cover transition-all duration-300 ${isHovered ? 'opacity-0' : 'opacity-100'}`} />
         {/* Hover Image */}
-        <img
-          src={model.hoverImage}
-          alt={`${model.name} hover`}
-          className={`absolute inset-0 w-full h-full object-cover transition-all duration-300 ${isHovered ? 'opacity-100 scale-105' : 'opacity-0'}`}
-        />
+        <img src={model.hoverImage} alt={`${model.name} hover`} className={`absolute inset-0 w-full h-full object-cover transition-all duration-300 ${isHovered ? 'opacity-100 scale-105' : 'opacity-0'}`} />
         {/* Overlay Gradient */}
         <div className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent transition-all duration-300 ${isHovered ? 'from-black/50' : ''}`}></div>
       </div>
@@ -186,30 +165,12 @@ const ExpandableCard = ({ model }: { model: typeof productModels[0] }) => {
 
           {/* Action Buttons */}
           <div className="grid grid-cols-3 gap-2">
-            <Button 
-              size="sm" 
-              variant="outline" 
-              className="flex items-center gap-1 text-xs"
-              onClick={() => window.location.href = model.link}
-            >
-              <Eye size={12} />
-              Detalhes
-            </Button>
-            <Button 
-              size="sm" 
-              variant="outline"
-              className="flex items-center gap-1 text-xs"
-              onClick={() => window.location.href = '/monte-o-seu'}
-            >
+            
+            <Button size="sm" variant="outline" className="flex items-center gap-1 text-xs" onClick={() => window.location.href = '/monte-o-seu'}>
               <Settings size={12} />
               Monte
             </Button>
-            <Button 
-              size="sm" 
-              variant="outline"
-              className="flex items-center gap-1 text-xs"
-              onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
-            >
+            <Button size="sm" variant="outline" className="flex items-center gap-1 text-xs" onClick={() => window.open('https://wa.me/5511999999999', '_blank')}>
               <MessageCircle size={12} />
               WhatsApp
             </Button>
@@ -274,30 +235,15 @@ const ExpandableCard = ({ model }: { model: typeof productModels[0] }) => {
 
               {/* Action Buttons */}
               <div className="grid grid-cols-3 gap-2">
-                <Button 
-                  size="sm" 
-                  variant="outline" 
-                  className="flex items-center gap-1"
-                  onClick={() => window.location.href = model.link}
-                >
+                <Button size="sm" variant="outline" className="flex items-center gap-1" onClick={() => window.location.href = model.link}>
                   <Eye size={14} />
                   Ver Detalhes
                 </Button>
-                <Button 
-                  size="sm" 
-                  variant="outline"
-                  className="flex items-center gap-1"
-                  onClick={() => window.location.href = '/monte-o-seu'}
-                >
+                <Button size="sm" variant="outline" className="flex items-center gap-1" onClick={() => window.location.href = '/monte-o-seu'}>
                   <Settings size={14} />
                   Monte o Seu
                 </Button>
-                <Button 
-                  size="sm" 
-                  variant="outline"
-                  className="flex items-center gap-1"
-                  onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
-                >
+                <Button size="sm" variant="outline" className="flex items-center gap-1" onClick={() => window.open('https://wa.me/5511999999999', '_blank')}>
                   <MessageCircle size={14} />
                   WhatsApp
                 </Button>
@@ -307,29 +253,21 @@ const ExpandableCard = ({ model }: { model: typeof productModels[0] }) => {
         </Dialog>
 
         {/* Desktop: Standard Button (always visible) */}
-        <Button 
-          className="hidden md:block mt-4 w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-300"
-          onClick={() => window.location.href = model.link}
-        >
+        <Button className="hidden md:block mt-4 w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-300" onClick={() => window.location.href = model.link}>
           Ver Mais
           <ArrowRight className="w-4 h-4 ml-2 transition-transform group-hover/btn:translate-x-1" />
         </Button>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 const ProductModelsSlider = () => {
   const [api, setApi] = useState<any>();
-
   const autoplayPlugin = Autoplay({
     delay: 4000,
     stopOnInteraction: true,
-    stopOnMouseEnter: true,
+    stopOnMouseEnter: true
   });
-
-  return (
-    <section className="py-12 bg-background min-h-[800px] overflow-visible">
+  return <section className="py-12 bg-background min-h-[800px] overflow-visible">
       <div className="container mx-auto px-6 overflow-visible">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -340,21 +278,14 @@ const ProductModelsSlider = () => {
           </p>
         </div>
 
-        <Carousel
-          setApi={setApi}
-          className="w-full overflow-visible"
-          plugins={[autoplayPlugin]}
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-        >
+        <Carousel setApi={setApi} className="w-full overflow-visible" plugins={[autoplayPlugin]} opts={{
+        align: "start",
+        loop: true
+      }}>
           <CarouselContent className="-ml-6 px-6">
-            {productModels.map((model) => (
-              <CarouselItem key={model.id} className="pl-6 md:basis-1/2 lg:basis-1/3 relative">
+            {productModels.map(model => <CarouselItem key={model.id} className="pl-6 md:basis-1/2 lg:basis-1/3 relative">
                 <ExpandableCard model={model} />
-              </CarouselItem>
-            ))}
+              </CarouselItem>)}
           </CarouselContent>
 
           <div className="flex justify-center mt-16 gap-4">
@@ -363,8 +294,6 @@ const ProductModelsSlider = () => {
           </div>
         </Carousel>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ProductModelsSlider;
