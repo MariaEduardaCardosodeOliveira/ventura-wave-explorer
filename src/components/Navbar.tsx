@@ -47,43 +47,22 @@ const Navbar = () => {
             </span>
           </Link>
 
-          {/* Contact Button & Menu */}
-          <div className="flex items-center space-x-4">
-            <Button 
-              asChild 
+          {/* Hamburger menu button */}
+          <div>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label="Toggle menu"
               className={cn(
-                "hidden md:flex rounded-full px-6 py-2 font-medium transition-all",
+                "rounded-full w-10 h-10 transition-colors",
                 isScrolled 
-                  ? "bg-primary text-white hover:bg-primary/90" 
-                  : "bg-white text-slate-900 hover:bg-white/90"
+                  ? "text-primary hover:bg-primary/10" 
+                  : "text-white hover:bg-white/10"
               )}
             >
-              <a 
-                href="https://wa.me/5511971124225" 
-                target="_blank" 
-                rel="noopener noreferrer"
-              >
-                Contact Us
-              </a>
+              {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
-            
-            {/* Hamburger menu button */}
-            <div>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label="Toggle menu"
-                className={cn(
-                  "rounded-full w-10 h-10 transition-colors",
-                  isScrolled 
-                    ? "text-primary hover:bg-primary/10" 
-                    : "text-white hover:bg-white/10"
-                )}
-              >
-                {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-              </Button>
-            </div>
           </div>
         </div>
 
@@ -106,7 +85,7 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               ))}
-              <div className="pt-2 md:hidden">
+              <div className="pt-2">
                 <Button asChild className="w-full rounded-full bg-white text-slate-900 hover:bg-white/90">
                   <a 
                     href="https://wa.me/5511971124225" 
