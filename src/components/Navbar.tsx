@@ -59,7 +59,7 @@ const Navbar = () => {
                   : "text-white hover:bg-white/10"
               )}
             >
-              {isOpen ? <X className="!w-5 !h-5" /> : <Menu className="!w-5 !h-5" />}
+              {isOpen ? <X className="!w-8 !h-8" /> : <Menu className="!w-8 !h-8" />}
             </Button>
           </div>
         </div>
