@@ -42,7 +42,7 @@ const Navbar = () => {
             <img 
               src="/lovable-uploads/96c487dd-875a-4f88-ba89-069dc9e8d217.png" 
               alt="Ventura Logo" 
-              className="h-8 w-auto transition-all duration-300"
+              className="h-12 w-auto transition-all duration-300"
             />
           </Link>
 
