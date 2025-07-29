@@ -165,10 +165,7 @@ const ExpandableCard = ({
 
           {/* Action Buttons */}
           <div className="flex gap-0.5">
-            <Button size="sm" variant="outline" className="flex items-center justify-center gap-1 text-xs flex-1 min-w-0" onClick={() => window.location.href = model.link}>
-              <Eye size={12} />
-              Ver
-            </Button>
+            
             <Button size="sm" variant="outline" className="flex items-center justify-center gap-1 text-xs flex-1 min-w-0" onClick={() => window.location.href = `/monte-o-seu/${model.categoryType}/${model.name.toLowerCase().replace(/\s+/g, '-')}`}>
               <Settings size={12} />
               Montar
@@ -256,23 +253,23 @@ const ExpandableCard = ({
         </Dialog>
 
         {/* Desktop: Standard Button (always visible) */}
-        <Button className="hidden md:block mt-4 w-full transition-all duration-300 group/btn" 
-               style={{
-                 display: 'flex',
-                 alignItems: 'center',
-                 justifyContent: 'center',
-                 gap: '8px',
-                 padding: '14px 24px',
-                 backgroundColor: '#00294d',
-                 color: 'white',
-                 fontSize: '16px',
-                 fontWeight: '600',
-                 borderRadius: '999px',
-                 minHeight: '44px',
-                 border: 'none'
-               }}
-               onClick={() => window.location.href = model.link}>
-          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" style={{ color: 'white' }} />
+        <Button className="hidden md:block mt-4 w-full transition-all duration-300 group/btn" style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '8px',
+        padding: '14px 24px',
+        backgroundColor: '#00294d',
+        color: 'white',
+        fontSize: '16px',
+        fontWeight: '600',
+        borderRadius: '999px',
+        minHeight: '44px',
+        border: 'none'
+      }} onClick={() => window.location.href = model.link}>
+          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" style={{
+          color: 'white'
+        }} />
           Ver Mais
         </Button>
       </div>
