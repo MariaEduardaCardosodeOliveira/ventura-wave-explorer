@@ -158,16 +158,14 @@ const VenturaMarine = () => {
         </div>
 
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-            VIVA ESSA EXPERIÊNCIA
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
+            VENTURA MARINE
             <br />
-            <span className="text-accent">NÁUTICA</span>
+            <span className="text-accent">EXPERIÊNCIA NÁUTICA</span>
           </h1>
           
-          <p className="text-lg md:text-xl mb-8 font-light opacity-90 max-w-3xl mx-auto leading-relaxed">
-            Nossa fábrica utiliza o que há de mais moderno e inovador no mundo, para trazer disrupção, tecnologia e requinte a cada embarcação produzida.
-            <br className="hidden md:block" />
-            Tudo é feito à mão e com muito cuidado por uma equipe altamente capacitada e apaixonada pelo que faz.
+          <p className="text-base md:text-lg mb-6 font-light opacity-90 max-w-2xl mx-auto leading-relaxed">
+            Tecnologia, requinte e inovação em cada embarcação produzida com cuidado artesanal.
           </p>
         </div>
       </section>
