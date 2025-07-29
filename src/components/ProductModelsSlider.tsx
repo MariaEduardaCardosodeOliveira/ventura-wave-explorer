@@ -256,8 +256,23 @@ const ExpandableCard = ({
         </Dialog>
 
         {/* Desktop: Standard Button (always visible) */}
-        <Button className="hidden md:block mt-4 w-full bg-[#00294d] hover:bg-[#00294d]/90 text-white rounded-full transition-all duration-300 flex items-center justify-center gap-2 py-[14px] px-6 min-h-[44px] font-semibold" onClick={() => window.location.href = model.link}>
-          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+        <Button className="hidden md:block mt-4 w-full transition-all duration-300 group/btn" 
+               style={{
+                 display: 'flex',
+                 alignItems: 'center',
+                 justifyContent: 'center',
+                 gap: '8px',
+                 padding: '14px 24px',
+                 backgroundColor: '#00294d',
+                 color: 'white',
+                 fontSize: '16px',
+                 fontWeight: '600',
+                 borderRadius: '999px',
+                 minHeight: '44px',
+                 border: 'none'
+               }}
+               onClick={() => window.location.href = model.link}>
+          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" style={{ color: 'white' }} />
           Ver Mais
         </Button>
       </div>
