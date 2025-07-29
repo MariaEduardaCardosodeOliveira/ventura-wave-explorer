@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, ArrowRight, Waves, Mountain, Zap, Ship, Car, Play } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Ship, Car, Zap, Settings } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 
 const slides = [
@@ -89,20 +89,20 @@ const HeroSlider = () => {
                     backgroundImage: `url(${slide.image})`,
                   }}
                 >
-                  {/* Lateral Gradient Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/40 to-slate-900/10"></div>
+                  {/* Subtle Dark Overlay */}
+                  <div className="absolute inset-0 bg-black/40"></div>
                 </div>
 
                 {/* Content with Animations */}
                 <div className="relative z-10 h-screen flex items-center">
                   <div className="container mx-auto px-6">
-                    <div className="max-w-3xl">
-                      <div className="space-y-8 text-white animate-fade-in">
+                    <div className="max-w-4xl">
+                      <div className="space-y-8 text-white animate-fadeInUp">
                         <div className="space-y-6">
-                          <h1 className="text-4xl lg:text-6xl font-extrabold font-poppins leading-tight tracking-tight bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
+                          <h1 className="text-3xl lg:text-5xl xl:text-6xl font-[700] font-poppins leading-tight tracking-tight text-white">
                             {slide.title}
                           </h1>
-                          <p className="text-lg lg:text-xl font-light leading-relaxed opacity-95 tracking-wide">
+                          <p className="text-base lg:text-lg xl:text-xl font-[300] font-inter leading-relaxed text-white/90 max-w-2xl">
                             {slide.subtitle}
                           </p>
                         </div>
@@ -110,19 +110,19 @@ const HeroSlider = () => {
                         <div className="flex flex-col sm:flex-row gap-4 pt-6">
                           <Button 
                             size="lg"
-                            className="group bg-gradient-to-r from-blue-900 to-orange-600 text-white border-0 hover:from-blue-800 hover:to-orange-500 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/30 transition-all duration-300 font-semibold px-6 py-3 text-base rounded-full relative overflow-hidden"
+                            className="group bg-gradient-to-r from-blue-900 to-red-600 text-white border-0 hover:from-blue-800 hover:to-red-500 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 font-semibold px-8 py-3 text-base rounded-full relative overflow-hidden"
                           >
-                            <ArrowRight className="w-4 h-4 mr-2 transition-transform group-hover:translate-x-1" />
-                            {slide.button1}
+                            <ArrowRight className="w-5 h-5 mr-2 transition-transform group-hover:translate-x-1" />
+                            Ver Modelos
                             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                           </Button>
                           <Button 
                             variant="outline"
                             size="lg"
-                            className="group border-2 border-white/80 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-slate-900 hover:scale-105 hover:shadow-lg hover:shadow-white/30 transition-all duration-300 font-semibold px-6 py-3 text-base rounded-full"
+                            className="group border-2 border-blue-900 text-white bg-white hover:bg-blue-900 hover:text-white hover:border-blue-800 transition-all duration-300 font-semibold px-8 py-3 text-base rounded-full"
                           >
-                            <Play className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
-                            {slide.button2}
+                            <Settings className="w-4 h-4 mr-2 transition-transform group-hover:rotate-45" />
+                            Monte o Seu
                           </Button>
                         </div>
                       </div>
