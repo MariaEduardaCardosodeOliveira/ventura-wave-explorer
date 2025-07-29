@@ -19,28 +19,26 @@ const Hero = () => {
 
       {/* Content Container */}
       <div className="relative z-10 container mx-auto px-6 h-full">
-        {/* Upper Right - Description */}
-        <div className="absolute top-32 right-6 max-w-md">
-          <p className="text-white text-lg font-light leading-relaxed opacity-90">
-            Design de ponta e performance em cada detalhe.
-          </p>
-        </div>
-
-        {/* Bottom Left - Main Title */}
+        {/* Bottom Left - Main Title and Content */}
         <div className="absolute bottom-32 left-6">
-          <div className="text-white space-y-8">
-            <h1 className="text-6xl lg:text-7xl font-bold font-poppins leading-tight">
-              Do mar à trilha —
-              <br />
-              <span className="text-5xl lg:text-6xl font-light">viva o extraordinário.</span>
-            </h1>
+          <div className="text-white space-y-6">
+            <div className="space-y-4">
+              <h1 className="text-5xl lg:text-6xl font-bold font-poppins leading-tight">
+                Do mar à trilha —
+                <br />
+                <span className="text-4xl lg:text-5xl font-light">viva o extraordinário.</span>
+              </h1>
+              <p className="text-white text-lg font-light leading-relaxed opacity-90 max-w-md">
+                Design de ponta e performance em cada detalhe.
+              </p>
+            </div>
             
             <div className="space-y-6">
               <div className="flex space-x-4">
-                <button className="inline-flex items-center space-x-3 bg-white text-slate-900 px-8 py-4 rounded-full font-medium hover:bg-slate-100 hover:scale-105 transition-all duration-300 group">
+                <button className="inline-flex items-center space-x-3 bg-white text-slate-900 px-6 py-3 rounded-full font-medium hover:bg-slate-100 hover:scale-105 transition-all duration-300 group">
                   <span>Ver Modelos</span>
                 </button>
-                <button className="inline-flex items-center space-x-3 border-2 border-white text-white px-8 py-4 rounded-full font-medium hover:bg-white hover:text-slate-900 hover:scale-105 transition-all duration-300 group">
+                <button className="inline-flex items-center space-x-3 border-2 border-white text-white px-6 py-3 rounded-full font-medium hover:bg-white hover:text-slate-900 hover:scale-105 transition-all duration-300 group">
                   <span>Monte o Seu</span>
                 </button>
               </div>
