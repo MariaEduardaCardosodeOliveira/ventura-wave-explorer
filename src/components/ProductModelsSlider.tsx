@@ -306,9 +306,9 @@ const ExpandableCard = ({ model }: { model: typeof productModels[0] }) => {
           </DialogContent>
         </Dialog>
 
-        {/* Desktop: Standard Button (hidden on hover) */}
+        {/* Desktop: Standard Button (always visible) */}
         <Button 
-          className={`hidden md:block mt-4 w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-300 ${isHovered ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}
+          className="hidden md:block mt-4 w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground rounded-full transition-all duration-300"
           onClick={() => window.location.href = model.link}
         >
           Ver Mais

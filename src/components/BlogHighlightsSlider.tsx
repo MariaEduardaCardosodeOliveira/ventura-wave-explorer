@@ -44,6 +44,70 @@ const BlogHighlightsSlider = () => {
     stopOnInteraction: true,
     stopOnMouseEnter: true
   });
-  return;
+  return (
+    <section className="py-16 bg-muted/50">
+      <div className="container mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+            Blog em Destaque
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Fique por dentro das últimas novidades e dicas do mundo náutico
+          </p>
+        </div>
+
+        <Carousel
+          setApi={setApi}
+          className="w-full"
+          plugins={[autoplayPlugin]}
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+        >
+          <CarouselContent>
+            {blogPosts.map((post) => (
+              <CarouselItem key={post.id} className="md:basis-1/2 lg:basis-1/3">
+                <div className="bg-card rounded-lg shadow-md overflow-hidden h-full">
+                  <img
+                    src={post.image}
+                    alt={post.title}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-6">
+                    <div className="flex flex-wrap gap-2 mb-3">
+                      {post.tags.map((tag) => (
+                        <Badge key={tag} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                    <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2">
+                      {post.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                      {post.summary}
+                    </p>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1 text-xs text-muted-foreground">
+                        <Clock size={12} />
+                        {post.readTime}
+                      </div>
+                      <Button variant="ghost" size="sm">
+                        Ler mais
+                        <ArrowRight size={14} />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      </div>
+    </section>
+  );
 };
 export default BlogHighlightsSlider;
