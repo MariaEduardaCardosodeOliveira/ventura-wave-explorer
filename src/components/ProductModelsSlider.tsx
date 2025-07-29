@@ -164,7 +164,7 @@ const ExpandableCard = ({ model }: { model: typeof productModels[0] }) => {
               <Settings size={16} />
               Ficha Técnica
             </h4>
-            <div className="grid grid-cols-2 gap-2 text-xs">
+            <div className="space-y-2 text-xs">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Comprimento:</span>
                 <span className="font-medium">{model.techSpecs.length}</span>
