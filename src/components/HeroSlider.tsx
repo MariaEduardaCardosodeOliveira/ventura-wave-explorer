@@ -94,7 +94,7 @@ const HeroSlider = () => {
                         <div className="flex flex-col sm:flex-row gap-4 pt-2">
                           <Button size="lg" className="group bg-blue-900 text-white border-0 hover:bg-blue-800 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 font-semibold px-8 py-3 text-base rounded-full relative overflow-hidden">
                             <ArrowRight className="w-5 h-5 mr-2 transition-transform group-hover:translate-x-1" />
-                            Ventura Adventure
+                            Ventura Marine
                             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                           </Button>
                           <Button variant="outline" size="lg" className="group border-2 border-blue-900 text-white bg-transparent hover:bg-blue-900 hover:text-white hover:border-blue-800 transition-all duration-300 font-semibold px-8 py-3 text-base rounded-full">
