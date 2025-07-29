@@ -165,10 +165,13 @@ const ExpandableCard = ({
 
           {/* Action Buttons */}
           <div className="grid grid-cols-3 gap-2">
-            
-            <Button size="sm" variant="outline" className="flex items-center gap-1 text-xs" onClick={() => window.location.href = '/monte-o-seu'}>
+            <Button size="sm" variant="outline" className="flex items-center gap-1 text-xs" onClick={() => window.location.href = model.link}>
+              <Eye size={12} />
+              Ver
+            </Button>
+            <Button size="sm" variant="outline" className="flex items-center gap-1 text-xs" onClick={() => window.location.href = `/monte-o-seu/${model.categoryType}/${model.name.toLowerCase().replace(/\s+/g, '-')}`}>
               <Settings size={12} />
-              Monte
+              Montar
             </Button>
             <Button size="sm" variant="outline" className="flex items-center gap-1 text-xs" onClick={() => window.open('https://wa.me/5511999999999', '_blank')}>
               <MessageCircle size={12} />
