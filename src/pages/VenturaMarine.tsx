@@ -151,7 +151,7 @@ const VenturaMarine = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{
-            backgroundImage: `url(https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&h=1080&fit=crop)`,
+            backgroundImage: `url(/lovable-uploads/7ddfbb29-23ee-46c0-b84f-3c81101fb12c.png)`,
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/60"></div>
