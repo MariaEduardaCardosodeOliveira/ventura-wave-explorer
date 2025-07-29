@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Waves, Mountain, Zap, Ship, Car, Play } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 
 const slides = [
@@ -12,7 +12,10 @@ const slides = [
     subtitle: "Design de ponta e performance em cada detalhe.",
     button1: "Ver Modelos",
     button2: "Monte o Seu",
-    category: "marine"
+    category: "marine",
+    icon: Ship,
+    tooltip: "Linha Marine",
+    decorativeShape: "waves"
   },
   {
     id: 2,
@@ -21,7 +24,10 @@ const slides = [
     subtitle: "Aventura, força e controle em cada curva.",
     button1: "Ver Linha Adventure",
     button2: "Monte o Seu",
-    category: "adventure"
+    category: "adventure",
+    icon: Car,
+    tooltip: "Linha Adventure",
+    decorativeShape: "mountains"
   },
   {
     id: 3,
@@ -30,7 +36,10 @@ const slides = [
     subtitle: "Mobilidade elétrica com adrenalina e inovação.",
     button1: "Conheça a Linha Elétrica",
     button2: "Saiba Mais",
-    category: "electric"
+    category: "electric",
+    icon: Zap,
+    tooltip: "Linha Electric",
+    decorativeShape: "lightning"
   }
 ];
 
@@ -58,6 +67,31 @@ const HeroSlider = () => {
     }
   };
 
+  const DecorativeShape = ({ shape }: { shape: string }) => {
+    if (shape === "waves") {
+      return (
+        <div className="absolute top-1/4 right-1/4 opacity-10">
+          <Waves className="w-32 h-32 text-white animate-pulse" />
+        </div>
+      );
+    }
+    if (shape === "mountains") {
+      return (
+        <div className="absolute top-1/3 right-1/3 opacity-10">
+          <Mountain className="w-28 h-28 text-white animate-pulse" />
+        </div>
+      );
+    }
+    if (shape === "lightning") {
+      return (
+        <div className="absolute top-1/2 right-1/4 opacity-10">
+          <Zap className="w-24 h-24 text-white animate-pulse" />
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <Carousel
@@ -72,44 +106,50 @@ const HeroSlider = () => {
         <CarouselContent className="h-screen">
           {slides.map((slide, index) => (
             <CarouselItem key={slide.id} className="h-screen">
-              <div className="relative h-screen w-full">
-                {/* Background Image */}
+              <div className="relative h-screen w-full group">
+                {/* Background Image with Parallax */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
                   style={{
                     backgroundImage: `url(${slide.image})`,
                   }}
                 >
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 via-slate-900/50 to-transparent"></div>
+                  {/* Lateral Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/40 to-slate-900/10"></div>
+                  
+                  {/* Decorative Shapes */}
+                  <DecorativeShape shape={slide.decorativeShape} />
                 </div>
 
-                {/* Content */}
+                {/* Content with Animations */}
                 <div className="relative z-10 h-screen flex items-center">
                   <div className="container mx-auto px-6">
-                    <div className="max-w-2xl">
-                      <div className="space-y-6 text-white">
-                        <div className="space-y-4">
-                          <h1 className="text-5xl lg:text-7xl font-bold font-poppins leading-tight">
+                    <div className="max-w-3xl">
+                      <div className="space-y-8 text-white animate-fade-in">
+                        <div className="space-y-6">
+                          <h1 className="text-6xl lg:text-8xl font-extrabold font-poppins leading-tight tracking-tight bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent">
                             {slide.title}
                           </h1>
-                          <p className="text-xl lg:text-2xl font-light leading-relaxed opacity-90">
+                          <p className="text-2xl lg:text-3xl font-light leading-relaxed opacity-95 tracking-wide">
                             {slide.subtitle}
                           </p>
                         </div>
                         
-                        <div className="flex flex-col sm:flex-row gap-4 pt-6">
+                        <div className="flex flex-col sm:flex-row gap-6 pt-8">
                           <Button 
                             size="lg"
-                            className="bg-white text-slate-900 hover:bg-white/90 hover:scale-105 transition-all duration-300 font-semibold px-8 py-4 text-lg rounded-full"
+                            className="group bg-gradient-to-r from-blue-900 to-orange-600 text-white border-0 hover:from-blue-800 hover:to-orange-500 hover:scale-110 hover:shadow-2xl hover:shadow-orange-500/30 transition-all duration-500 font-bold px-10 py-5 text-lg rounded-full relative overflow-hidden"
                           >
+                            <ArrowRight className="w-5 h-5 mr-3 transition-transform group-hover:translate-x-1" />
                             {slide.button1}
+                            <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                           </Button>
                           <Button 
                             variant="outline"
                             size="lg"
-                            className="border-2 border-white text-white bg-transparent hover:bg-white hover:text-slate-900 hover:scale-105 transition-all duration-300 font-semibold px-8 py-4 text-lg rounded-full"
+                            className="group border-2 border-white/80 text-white bg-white/10 backdrop-blur-sm hover:bg-white hover:text-slate-900 hover:scale-110 hover:shadow-2xl hover:shadow-white/30 transition-all duration-500 font-bold px-10 py-5 text-lg rounded-full"
                           >
+                            <Play className="w-5 h-5 mr-3 transition-transform group-hover:scale-110" />
                             {slide.button2}
                           </Button>
                         </div>
@@ -124,31 +164,62 @@ const HeroSlider = () => {
 
         {/* Navigation Arrows */}
         <div className="absolute left-6 top-1/2 transform -translate-y-1/2 z-20">
-          <CarouselPrevious className="bg-white/20 border-white/30 text-white hover:bg-white/30 hover:text-white backdrop-blur-sm">
+          <CarouselPrevious className="bg-white/20 border-white/30 text-white hover:bg-white/40 hover:scale-110 hover:shadow-lg transition-all duration-300 backdrop-blur-md">
             <ChevronLeft className="h-6 w-6" />
           </CarouselPrevious>
         </div>
         <div className="absolute right-6 top-1/2 transform -translate-y-1/2 z-20">
-          <CarouselNext className="bg-white/20 border-white/30 text-white hover:bg-white/30 hover:text-white backdrop-blur-sm">
+          <CarouselNext className="bg-white/20 border-white/30 text-white hover:bg-white/40 hover:scale-110 hover:shadow-lg transition-all duration-300 backdrop-blur-md">
             <ChevronRight className="h-6 w-6" />
           </CarouselNext>
         </div>
 
         {/* Slide Indicators */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20">
-          <div className="flex space-x-3">
+        <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex space-x-4">
             {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => goToSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-4 h-4 rounded-full transition-all duration-300 ${
                   index === currentSlide
-                    ? "bg-white scale-125"
-                    : "bg-white/50 hover:bg-white/70"
+                    ? "bg-white scale-125 shadow-lg shadow-white/50"
+                    : "bg-white/50 hover:bg-white/70 hover:scale-110"
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
+          </div>
+        </div>
+
+        {/* Thumbnail Navigation */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex space-x-6 bg-black/30 backdrop-blur-md rounded-full px-6 py-3">
+            {slides.map((slide, index) => {
+              const IconComponent = slide.icon;
+              return (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`group relative flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${
+                    index === currentSlide
+                      ? "bg-white text-slate-900 scale-110 shadow-lg"
+                      : "bg-white/20 text-white hover:bg-white/30 hover:scale-105"
+                  }`}
+                  title={slide.tooltip}
+                >
+                  <IconComponent className="w-6 h-6" />
+                  
+                  {/* Tooltip */}
+                  <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                    <div className="bg-black/80 text-white text-sm px-3 py-1 rounded-lg whitespace-nowrap">
+                      {slide.tooltip}
+                    </div>
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/80"></div>
+                  </div>
+                </button>
+              );
+            })}
           </div>
         </div>
       </Carousel>
