@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero";
+import HeroSlider from "@/components/HeroSlider";
 import Categories from "@/components/Categories";
 import AboutSection from "@/components/AboutSection";
 import BlogSection from "@/components/BlogSection";
@@ -11,7 +11,7 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <Hero />
+      <HeroSlider />
       
       {/* Categories Section */}
       <Categories />
