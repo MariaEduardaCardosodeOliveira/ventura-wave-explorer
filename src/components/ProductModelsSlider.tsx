@@ -100,26 +100,18 @@ const productModels = [
   }
 ];
 
-const getCategoryBackground = (categoryType: string) => {
-  switch (categoryType) {
-    case 'marine':
-      return 'bg-gradient-to-br from-blue-900 via-blue-600 to-white';
-    case 'adventure':
-      return 'bg-gradient-to-br from-gray-700 via-gray-500 to-gray-300 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] relative before:absolute before:inset-0 before:bg-[url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23000000" fill-opacity="0.1"%3E%3Cpath d="M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")] before:opacity-30';
-    case 'electric':
-      return 'bg-gradient-to-br from-white via-green-100 to-lime-400';
-    default:
-      return 'bg-card';
-  }
-};
-
 // Component para Card Expandível
 const ExpandableCard = ({ model }: { model: typeof productModels[0] }) => {
   const [isHovered, setIsHovered] = useState(false);
   
   return (
     <div 
-      className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-300 ease-in-out"
+      className={`group relative bg-card rounded-2xl overflow-hidden shadow-lg transition-all duration-500 ease-in-out transform-gpu ${
+        isHovered 
+          ? 'scale-110 shadow-2xl shadow-primary/30 z-50' 
+          : 'hover:shadow-xl hover:shadow-primary/20 z-10'
+      }`}
+      style={{ transformOrigin: 'center center' }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -354,9 +346,9 @@ const ProductModelsSlider = () => {
             loop: true,
           }}
         >
-          <CarouselContent className="-ml-4">
+          <CarouselContent className="-ml-6 px-6">
             {productModels.map((model) => (
-              <CarouselItem key={model.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
+              <CarouselItem key={model.id} className="pl-6 md:basis-1/2 lg:basis-1/3 relative">
                 <ExpandableCard model={model} />
               </CarouselItem>
             ))}
