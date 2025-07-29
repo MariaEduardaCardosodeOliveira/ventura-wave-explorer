@@ -8,7 +8,7 @@ const slides = [{
   image: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
   title: "Do mar à trilha —",
   subtitle: "Design de ponta e performance em cada detalhe.",
-  button1: "Ver Modelos",
+  button1: "Ventura Marine",
   button2: "Monte o Seu",
   category: "marine",
   icon: Ship,
@@ -19,7 +19,7 @@ const slides = [{
   image: "/lovable-uploads/f2adefb4-7c40-4c04-a99d-ffcda84194f2.png",
   title: "Desbrave qualquer terreno",
   subtitle: "Aventura, força e controle em cada curva.",
-  button1: "Ver Linha Adventure",
+  button1: "Ventura Adventure",
   button2: "Monte o Seu",
   category: "adventure",
   icon: Car,
@@ -30,7 +30,7 @@ const slides = [{
   image: "/lovable-uploads/4ecac867-4e3b-41a2-a52c-988669e1bc11.png",
   title: "Performance limpa, emoção pura",
   subtitle: "Mobilidade elétrica com adrenalina e inovação.",
-  button1: "Conheça a Linha Elétrica",
+  button1: "Ventura Electric",
   button2: "Saiba Mais",
   category: "electric",
   icon: Zap,
@@ -94,7 +94,7 @@ const HeroSlider = () => {
                         <div className="flex flex-col sm:flex-row gap-4 pt-2">
                           <Button size="lg" className="group bg-blue-900 text-white border-0 hover:bg-blue-800 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 font-semibold px-8 py-3 text-base rounded-full relative overflow-hidden">
                             <ArrowRight className="w-5 h-5 mr-2 transition-transform group-hover:translate-x-1" />
-                            Ventura Marine
+                            {slide.button1}
                             <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                           </Button>
                           <Button variant="outline" size="lg" className="group border-2 border-blue-900 text-white bg-transparent hover:bg-blue-900 hover:text-white hover:border-blue-800 transition-all duration-300 font-semibold px-8 py-3 text-base rounded-full">
