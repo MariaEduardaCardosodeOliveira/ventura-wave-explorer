@@ -99,10 +99,10 @@ const HeroSlider = () => {
                     <div className="max-w-4xl">
                       <div className="space-y-8 text-white animate-fadeInUp">
                         <div className="space-y-6">
-                          <h1 className="text-3xl lg:text-5xl xl:text-6xl font-[700] font-poppins leading-tight tracking-tight text-white">
+                          <h1 className="text-3xl lg:text-5xl xl:text-6xl font-bold font-poppins leading-tight tracking-tight text-white" style={{fontWeight: 700}}>
                             {slide.title}
                           </h1>
-                          <p className="text-base lg:text-lg xl:text-xl font-[300] font-inter leading-relaxed text-white/90 max-w-2xl">
+                          <p className="text-base lg:text-lg xl:text-xl font-light font-inter leading-relaxed text-white/90 max-w-2xl" style={{fontWeight: 300}}>
                             {slide.subtitle}
                           </p>
                         </div>
