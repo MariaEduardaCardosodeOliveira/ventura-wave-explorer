@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Flame, Star, Lightbulb, Crown } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 
 const productModels = [
@@ -12,7 +12,12 @@ const productModels = [
     specifications: "8.5m • 12 pessoas • 300HP",
     image: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
     hoverImage: "/src/assets/hero-boat.jpg",
-    link: "/pontoon-250"
+    link: "/pontoon-250",
+    tag: {
+      label: "Mais Vendido",
+      icon: Flame,
+      color: "bg-red-500/90"
+    }
   },
   {
     id: 2,
@@ -21,7 +26,12 @@ const productModels = [
     specifications: "5.8m • 8 pessoas • 200HP",
     image: "/src/assets/marine-boat.jpg",
     hoverImage: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
-    link: "/v195-comfort"
+    link: "/v195-comfort",
+    tag: {
+      label: "Destaque do Mês",
+      icon: Lightbulb,
+      color: "bg-amber-500/90"
+    }
   },
   {
     id: 3,
@@ -30,7 +40,12 @@ const productModels = [
     specifications: "4x4 • 800cc • Todo Terreno",
     image: "/lovable-uploads/f2adefb4-7c40-4c04-a99d-ffcda84194f2.png",
     hoverImage: "/src/assets/adventure-utv.jpg",
-    link: "/adventure-utv"
+    link: "/adventure-utv",
+    tag: {
+      label: "Lançamento",
+      icon: Star,
+      color: "bg-blue-500/90"
+    }
   },
   {
     id: 4,
@@ -39,7 +54,12 @@ const productModels = [
     specifications: "100% Elétrico • 50km/h • 2h autonomia",
     image: "/lovable-uploads/4ecac867-4e3b-41a2-a52c-988669e1bc11.png",
     hoverImage: "/src/assets/electric-jetski.jpg",
-    link: "/electric-jetski"
+    link: "/electric-jetski",
+    tag: {
+      label: "Premium",
+      icon: Crown,
+      color: "bg-purple-500/90"
+    }
   }
 ];
 
@@ -79,6 +99,12 @@ const ProductModelsSlider = () => {
                 <div className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-700 hover:scale-[1.03] transform-gpu">
                   {/* Image Container */}
                   <div className="relative h-64 overflow-hidden">
+                    {/* Tag de Destaque */}
+                    <div className={`absolute top-4 right-4 ${model.tag.color} backdrop-blur-sm text-white px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1.5 z-10 shadow-lg animate-pulse hover:animate-none transition-all duration-300`}>
+                      <model.tag.icon size={12} />
+                      {model.tag.label}
+                    </div>
+
                     {/* Default Image */}
                     <img
                       src={model.image}
@@ -95,8 +121,8 @@ const ProductModelsSlider = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/50 transition-all duration-700"></div>
                     
                     {/* Floating Badge */}
-                    <div className="absolute top-4 left-4 bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 translate-y-2 group-hover:translate-y-0">
-                      Premium
+                    <div className="absolute bottom-4 left-4 bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 translate-y-2 group-hover:translate-y-0">
+                      Premium Quality
                     </div>
                   </div>
 
