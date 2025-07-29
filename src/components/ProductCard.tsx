@@ -57,7 +57,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         }`}
         style={{ 
           transformOrigin: 'center top',
-          minHeight: isHovered ? '600px' : '450px'
+          minHeight: '650px'
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
