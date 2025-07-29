@@ -20,7 +20,7 @@ const Hero = () => {
       {/* Content Container */}
       <div className="relative z-10 container mx-auto px-6 h-full">
         {/* Upper Right - Description */}
-        <div className="absolute top-20 right-6 max-w-md">
+        <div className="absolute top-32 right-6 max-w-md">
           <p className="text-white text-lg font-light leading-relaxed opacity-90">
             Explore breathtaking destinations with our premium yacht rentals. 
             Comfort, elegance, and adventure just a booking away!
