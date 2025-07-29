@@ -57,7 +57,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
         }`}
         style={{ 
           transformOrigin: 'center top',
-          minHeight: '650px'
+          height: '600px'
         }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -86,8 +86,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
           )}
         </div>
 
-        {/* Card Content */}
-        <div className="p-6">
+        {/* Card Content - Flex container */}
+        <div className="flex flex-col h-80 p-6">
           {/* Basic Info */}
           <div className="space-y-3 mb-4">
             <h3 className={`text-xl font-bold transition-colors duration-300 ${
@@ -105,14 +105,14 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
           {/* Expanded Content - Ficha Técnica */}
           <div className={`transition-all duration-300 ease-in-out overflow-hidden ${
-            isHovered ? 'max-h-96 opacity-100 mb-4' : 'max-h-0 opacity-0'
+            isHovered ? 'max-h-64 opacity-100' : 'max-h-0 opacity-0'
           }`}>
-            <div className="bg-muted/30 rounded-lg p-4 mb-4">
-              <h4 className="text-sm font-semibold text-foreground mb-3 flex items-center gap-2">
-                <Settings size={16} />
+            <div className="bg-muted/30 rounded-lg p-3 mb-3">
+              <h4 className="text-xs font-semibold text-foreground mb-2 flex items-center gap-2">
+                <Settings size={14} />
                 Ficha Técnica
               </h4>
-              <div className="grid grid-cols-2 gap-3 text-xs">
+              <div className="grid grid-cols-2 gap-2 text-xs">
                 <div className="flex flex-col">
                   <span className="text-muted-foreground">Comprimento</span>
                   <span className="font-medium text-foreground">{product.techSpecs.length}</span>
@@ -133,40 +133,43 @@ const ProductCard = ({ product }: ProductCardProps) => {
             </div>
 
             {/* Action Buttons */}
-            <div className="grid grid-cols-3 gap-2">
+            <div className="grid grid-cols-3 gap-1 mb-3">
               <Button 
                 size="sm" 
                 variant="outline" 
-                className="flex items-center gap-1 text-xs"
+                className="flex items-center gap-1 text-xs h-8"
                 onClick={() => window.location.href = product.link}
               >
-                <Eye size={12} />
+                <Eye size={10} />
                 Detalhes
               </Button>
               <Button 
                 size="sm" 
                 variant="outline"
-                className="flex items-center gap-1 text-xs"
+                className="flex items-center gap-1 text-xs h-8"
                 onClick={() => window.location.href = '/monte-o-seu'}
               >
-                <Settings size={12} />
+                <Settings size={10} />
                 Monte
               </Button>
               <Button 
                 size="sm" 
                 variant="outline"
-                className="flex items-center gap-1 text-xs"
+                className="flex items-center gap-1 text-xs h-8"
                 onClick={() => window.open('https://wa.me/5511999999999', '_blank')}
               >
-                <MessageCircle size={12} />
+                <MessageCircle size={10} />
                 WhatsApp
               </Button>
             </div>
           </div>
 
-          {/* Ver Mais Button - Always visible */}
+          {/* Spacer - Empurra o botão para baixo */}
+          <div className="flex-grow"></div>
+
+          {/* Ver Mais Button - SEMPRE no fundo */}
           <Button 
-            className="w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground rounded-full"
+            className="w-full group/btn bg-primary hover:bg-primary/90 text-primary-foreground rounded-full mt-auto"
             onClick={() => window.location.href = product.link}
           >
             Ver Mais
