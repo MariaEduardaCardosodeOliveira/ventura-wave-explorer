@@ -40,7 +40,10 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src="/lovable-uploads/96c487dd-875a-4f88-ba89-069dc9e8d217.png" 
+              src={location.pathname === "/ventura-marine" 
+                ? "/lovable-uploads/4aeb06cc-2e94-4ab2-8505-f51f55c614e6.png"
+                : "/lovable-uploads/96c487dd-875a-4f88-ba89-069dc9e8d217.png"
+              } 
               alt="Ventura Logo" 
               className="h-12 w-auto transition-all duration-300"
             />
