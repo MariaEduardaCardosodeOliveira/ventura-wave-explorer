@@ -326,8 +326,8 @@ const ProductModelsSlider = () => {
   });
 
   return (
-    <section className="py-16 bg-background min-h-[800px]">
-      <div className="container mx-auto px-6">
+    <section className="py-16 bg-background min-h-[1000px] overflow-visible">
+      <div className="container mx-auto px-6 overflow-visible">
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
             Mais Vendidos
@@ -339,7 +339,7 @@ const ProductModelsSlider = () => {
 
         <Carousel
           setApi={setApi}
-          className="w-full"
+          className="w-full overflow-visible"
           plugins={[autoplayPlugin]}
           opts={{
             align: "start",
