@@ -11,6 +11,7 @@ const productModels = [
     category: "Pontoon Series",
     specifications: "8.5m • 12 pessoas • 300HP",
     image: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
+    hoverImage: "/src/assets/hero-boat.jpg",
     link: "/pontoon-250"
   },
   {
@@ -19,6 +20,7 @@ const productModels = [
     category: "Runabout Series", 
     specifications: "5.8m • 8 pessoas • 200HP",
     image: "/src/assets/marine-boat.jpg",
+    hoverImage: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
     link: "/v195-comfort"
   },
   {
@@ -27,6 +29,7 @@ const productModels = [
     category: "Adventure Series",
     specifications: "4x4 • 800cc • Todo Terreno",
     image: "/lovable-uploads/f2adefb4-7c40-4c04-a99d-ffcda84194f2.png",
+    hoverImage: "/src/assets/adventure-utv.jpg",
     link: "/adventure-utv"
   },
   {
@@ -35,6 +38,7 @@ const productModels = [
     category: "Electric Series",
     specifications: "100% Elétrico • 50km/h • 2h autonomia",
     image: "/lovable-uploads/4ecac867-4e3b-41a2-a52c-988669e1bc11.png",
+    hoverImage: "/src/assets/electric-jetski.jpg",
     link: "/electric-jetski"
   }
 ];
@@ -72,16 +76,28 @@ const ProductModelsSlider = () => {
           <CarouselContent className="-ml-4">
             {productModels.map((model) => (
               <CarouselItem key={model.id} className="pl-4 md:basis-1/2 lg:basis-1/3">
-                <div className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500">
+                <div className="group relative bg-card rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-primary/20 transition-all duration-700 hover:scale-[1.03] transform-gpu">
                   {/* Image Container */}
                   <div className="relative h-64 overflow-hidden">
+                    {/* Default Image */}
                     <img
                       src={model.image}
                       alt={model.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-all duration-700 group-hover:opacity-0"
+                    />
+                    {/* Hover Image */}
+                    <img
+                      src={model.hoverImage}
+                      alt={`${model.name} hover`}
+                      className="absolute inset-0 w-full h-full object-cover transition-all duration-700 opacity-0 group-hover:opacity-100 group-hover:scale-105"
                     />
                     {/* Overlay Gradient */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent group-hover:from-black/50 transition-all duration-700"></div>
+                    
+                    {/* Floating Badge */}
+                    <div className="absolute top-4 left-4 bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1 rounded-full text-xs font-medium opacity-0 group-hover:opacity-100 transition-all duration-500 delay-200 translate-y-2 group-hover:translate-y-0">
+                      Premium
+                    </div>
                   </div>
 
                   {/* Content */}
