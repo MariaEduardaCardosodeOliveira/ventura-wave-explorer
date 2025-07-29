@@ -36,7 +36,7 @@ const BlogSection = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Featured Post */}
           <div className="lg:col-span-2 fade-in">
-            <article className="card-elegant h-full">
+            <article className="card-elegant">
               {/* Featured Image Placeholder */}
               <div className="image-placeholder h-64 mb-6">
                 <div className="text-center">
