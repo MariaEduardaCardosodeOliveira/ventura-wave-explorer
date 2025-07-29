@@ -154,7 +154,7 @@ const VenturaMarine = () => {
             backgroundImage: `url(/lovable-uploads/7ddfbb29-23ee-46c0-b84f-3c81101fb12c.png)`,
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60"></div>
         </div>
 
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-4 fade-in">
