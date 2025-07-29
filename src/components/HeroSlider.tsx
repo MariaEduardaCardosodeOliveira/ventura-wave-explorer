@@ -84,9 +84,10 @@ const HeroSlider = () => {
               <div className="relative h-screen w-full group">
                 {/* Background Image with Parallax */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-all duration-1000 group-hover:scale-105 transform-gpu will-change-transform"
                   style={{
                     backgroundImage: `url(${slide.image})`,
+                    backgroundAttachment: 'fixed'
                   }}
                 >
                   {/* Subtle Dark Overlay */}
@@ -97,7 +98,7 @@ const HeroSlider = () => {
                 <div className="relative z-10 h-screen flex items-center">
                   <div className="container mx-auto px-6">
                     <div className="max-w-4xl">
-                      <div className="space-y-8 text-white animate-fadeInUp">
+                      <div className="space-y-8 text-white opacity-0 translate-y-8 animate-[fadeInUp_1.2s_ease-out_0.3s_forwards]">
                         <div className="space-y-6">
                           <h1 className="text-3xl lg:text-5xl xl:text-6xl font-bold font-poppins leading-tight tracking-tight text-white" style={{fontWeight: 700}}>
                             {slide.title}
