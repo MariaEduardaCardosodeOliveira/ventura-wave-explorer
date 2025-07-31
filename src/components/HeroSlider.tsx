@@ -74,9 +74,9 @@ const HeroSlider = () => {
                 </div>
 
                 {/* Content with Animations */}
-                <div className="relative z-10 h-screen flex items-end">
-                  <div className="container mx-auto px-6 pb-20">
-                    <div className="max-w-4xl">
+                <div className="relative z-10 h-screen flex items-center justify-center">
+                  <div className="container mx-auto px-6 text-center">
+                    <div className="max-w-4xl mx-auto">
                       <div className="space-y-8 text-white opacity-0 translate-y-8 animate-fadeInUp">
                         <div className="space-y-6">
                           <h1 className="text-3xl lg:text-5xl xl:text-6xl font-bold font-poppins leading-tight tracking-tight text-white" style={{
@@ -84,7 +84,7 @@ const HeroSlider = () => {
                       }}>
                             {slide.title}
                           </h1>
-                          <p className="text-base lg:text-lg xl:text-xl font-light font-inter leading-relaxed text-white/90 max-w-2xl" style={{
+                          <p className="text-base lg:text-lg xl:text-xl font-light font-inter leading-relaxed text-white/90 max-w-2xl mx-auto" style={{
                         fontWeight: 300
                       }}>
                             {slide.subtitle}
