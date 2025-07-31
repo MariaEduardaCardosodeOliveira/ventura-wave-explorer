@@ -30,7 +30,7 @@ const Categories = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16 fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-4">
-            Explore Nossos Produtos
+            CONHEÇA NOSSAS EMBARCAÇÕES
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Descubra a linha completa Ventura e encontre o produto perfeito para sua aventura
