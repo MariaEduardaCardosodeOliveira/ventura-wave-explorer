@@ -91,7 +91,7 @@ const HeroSlider = () => {
                           </p>
                         </div>
                         
-                        <div className="flex flex-col sm:flex-row gap-4 pt-2">
+                        <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center">
                           <Button size="lg" className="group bg-blue-900 text-white border-0 hover:bg-blue-800 hover:shadow-xl hover:shadow-blue-500/30 transition-all duration-300 font-semibold px-8 py-3 text-base rounded-full relative overflow-hidden">
                             <ArrowRight className="w-5 h-5 mr-2 transition-transform group-hover:translate-x-1" />
                             {slide.button1}
