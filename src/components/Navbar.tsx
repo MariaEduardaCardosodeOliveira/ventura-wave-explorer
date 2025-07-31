@@ -69,43 +69,35 @@ const Navbar = () => {
 
         {/* Mobile/Desktop Navigation Menu */}
         {isOpen && (
-          <div className="absolute top-full left-0 right-0 mt-2 mx-4 bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
-            <div className="p-6">
-              <div className="grid gap-1">
-                {navigation.map((item, index) => (
+          <div className="absolute top-full left-0 right-0 mt-2 mx-4 bg-white/95 backdrop-blur-xl rounded-xl border border-gray-200/50 shadow-lg overflow-hidden">
+            <div className="p-4">
+              <div className="space-y-1">
+                {navigation.map((item) => (
                   <Link
                     key={item.name}
                     to={item.href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      "group relative flex items-center px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 hover:scale-105",
+                      "block px-4 py-3 text-sm font-medium rounded-lg transition-colors",
                       isActive(item.href)
-                        ? "bg-gradient-to-r from-primary/20 to-primary/10 text-white border border-primary/20"
-                        : "text-white/90 hover:bg-white/5 hover:text-white"
+                        ? "bg-primary text-white"
+                        : "text-gray-700 hover:bg-gray-50"
                     )}
-                    style={{ animationDelay: `${index * 50}ms` }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 rounded-xl transition-all duration-300" />
-                    <span className="relative z-10">{item.name}</span>
-                    <div className={cn(
-                      "ml-auto w-2 h-2 rounded-full transition-all duration-300",
-                      isActive(item.href) ? "bg-primary" : "bg-transparent group-hover:bg-white/30"
-                    )} />
+                    {item.name}
                   </Link>
                 ))}
               </div>
               
-              <div className="mt-6 pt-6 border-t border-white/10">
-                <Button asChild className="w-full h-12 rounded-xl bg-gradient-to-r from-primary to-primary-glow text-white font-semibold shadow-lg hover:shadow-primary/25 hover:scale-105 transition-all duration-300">
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <Button asChild className="w-full rounded-lg">
                   <a 
                     href="https://wa.me/5511971124225" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center justify-center gap-2"
                   >
-                    <span>Contact Us</span>
-                    <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse" />
+                    Contact Us
                   </a>
                 </Button>
               </div>
