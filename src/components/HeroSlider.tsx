@@ -6,7 +6,7 @@ import Autoplay from "embla-carousel-autoplay";
 const slides = [{
   id: 1,
   image: "/lovable-uploads/794f5ef0-0d7a-4b2a-b0f9-02ec1849d878.png",
-  title: "Do mar à trilha —",
+  title: "Do mar à trilha",
   subtitle: "Design de ponta e performance em cada detalhe.",
   button1: "Ventura Marine",
   button2: "Monte o Seu",
