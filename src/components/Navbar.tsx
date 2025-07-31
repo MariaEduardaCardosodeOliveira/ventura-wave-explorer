@@ -78,10 +78,10 @@ const Navbar = () => {
                     to={item.href}
                     onClick={() => setIsOpen(false)}
                     className={cn(
-                      "block px-4 py-3 text-sm font-medium rounded-lg transition-colors",
+                      "block px-4 py-3 text-sm font-medium rounded-lg transition-all duration-200 hover:translate-x-1",
                       isActive(item.href)
                         ? "bg-primary text-white"
-                        : "text-gray-700 hover:bg-gray-50"
+                        : "text-gray-700 hover:bg-primary/5 hover:text-primary"
                     )}
                   >
                     {item.name}
