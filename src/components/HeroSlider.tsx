@@ -79,7 +79,7 @@ const HeroSlider = () => {
                     <div className="max-w-4xl mx-auto">
                       <div className="space-y-8 text-white opacity-0 translate-y-8 animate-fadeInUp">
                         <div className="space-y-6">
-                          <h1 className="text-3xl lg:text-5xl xl:text-6xl font-bold font-poppins leading-tight tracking-tight text-white" style={{
+                          <h1 className="text-4xl lg:text-6xl xl:text-7xl font-bold font-poppins leading-tight tracking-tight text-white" style={{
                         fontWeight: 700
                       }}>
                             {slide.title}
