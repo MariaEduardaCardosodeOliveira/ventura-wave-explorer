@@ -69,32 +69,43 @@ const Navbar = () => {
 
         {/* Mobile/Desktop Navigation Menu */}
         {isOpen && (
-          <div className="pt-4 pb-2 border-t border-white/30 mt-4 bg-slate-900/90 backdrop-blur-sm rounded-lg">
-            <div className="flex flex-col space-y-3">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className={cn(
-                    "px-3 py-2 text-sm font-medium transition-colors text-white hover:text-white/80",
-                    isActive(item.href)
-                      ? "text-white"
-                      : "text-white/90"
-                  )}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="pt-2">
-                <Button asChild className="w-full rounded-full bg-white text-slate-900 hover:bg-white/90">
+          <div className="absolute top-full left-0 right-0 mt-2 mx-4 bg-gradient-to-br from-slate-900/95 to-slate-800/95 backdrop-blur-xl rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
+            <div className="p-6">
+              <div className="grid gap-1">
+                {navigation.map((item, index) => (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    onClick={() => setIsOpen(false)}
+                    className={cn(
+                      "group relative flex items-center px-4 py-3 text-base font-medium rounded-xl transition-all duration-300 hover:scale-105",
+                      isActive(item.href)
+                        ? "bg-gradient-to-r from-primary/20 to-primary/10 text-white border border-primary/20"
+                        : "text-white/90 hover:bg-white/5 hover:text-white"
+                    )}
+                    style={{ animationDelay: `${index * 50}ms` }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 to-primary/0 group-hover:from-primary/5 group-hover:to-primary/10 rounded-xl transition-all duration-300" />
+                    <span className="relative z-10">{item.name}</span>
+                    <div className={cn(
+                      "ml-auto w-2 h-2 rounded-full transition-all duration-300",
+                      isActive(item.href) ? "bg-primary" : "bg-transparent group-hover:bg-white/30"
+                    )} />
+                  </Link>
+                ))}
+              </div>
+              
+              <div className="mt-6 pt-6 border-t border-white/10">
+                <Button asChild className="w-full h-12 rounded-xl bg-gradient-to-r from-primary to-primary-glow text-white font-semibold shadow-lg hover:shadow-primary/25 hover:scale-105 transition-all duration-300">
                   <a 
                     href="https://wa.me/5511971124225" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     onClick={() => setIsOpen(false)}
+                    className="flex items-center justify-center gap-2"
                   >
-                    Contact Us
+                    <span>Contact Us</span>
+                    <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse" />
                   </a>
                 </Button>
               </div>
